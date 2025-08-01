@@ -4,39 +4,43 @@
 
 ![img](images/AIAgentUseCase.jpg)
 
-A curated collection of AI agent use cases across industries, showcasing practical applications and linking to open-source projects for implementation. Explore how AI agents are transforming industries like healthcare, finance, education, and more! 🤖✨
+A curated collection of AI agent use cases across industries, showcasing practical applications and linking to
+open-source projects for implementation. Explore how AI agents are transforming industries like healthcare, finance,
+education, and more! 🤖✨
 
 ---
 
 ## 📋 Table of Contents
 
-- [Introduction](#introduction)
+- [Introduction](#-introduction)
 - [Industry Usecase](#-industry-usecase-mindmap)
-- [Use Case Table](#use-case-table)
+- [Use Case Table](#-use-case-table)
 - [Framework Wise UseCase](#framework-wise-usecases)
   - [CrewAI UseCase](#framework-name-crewai)
   - [AutoGen UseCase](#framework-name-autogen)
   - [Agno UseCase](#framework-name-agno)
   - [Langgraph UseCase](#framework-name-langgraph)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
 ## 🧠 Introduction
 
-Artificial Intelligence (AI) agents are revolutionizing the way industries operate. From personalized learning to financial trading bots, AI agents bring efficiency, innovation, and scalability. This repository provides:
+Artificial Intelligence (AI) agents are revolutionizing the way industries operate. From personalized learning to
+financial trading bots, AI agents bring efficiency, innovation, and scalability. This repository provides:
 
 - A categorized list of industries where AI agents are making an impact.
 - Detailed use cases with links to open-source projects for implementation.
 
-Whether you're a developer, researcher, or business enthusiast, this repository is your go-to resource for AI agent inspiration and learning.
+Whether you're a developer, researcher, or business enthusiast, this repository is your go-to resource for AI agent
+inspiration and learning.
 
 ---
 
 ## 🏭 Industry UseCase MindMap
 
-![](images/industry_usecase1.png)
+![Industry Use Case MindMap](images/industry_usecase1.png)
 
 ---
 
@@ -64,8 +68,7 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | **E-commerce Personal Shopper Agent** | E-commerce       | Helps customers find products they’ll love.             | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/Hoanganhvu123/ShoppingGPT)                                                                     |
 | **Logistics Optimization Agent**      | Supply Chain     | Plans efficient delivery routes and manages inventory.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/microsoft/OptiGuide)                                                                           |
 | **Vibe Hacking Agent**                | Cybersecurity    | Autonomous Multi-Agent Based Red Team Testing Service.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PurpleAILAB/Decepticon) |
-| **MediSuite-Ai-Agent**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         | 
-| **Lina-Egyptian-Medical-Chatbot**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         |
+| **MediSuite-Ai-Agent**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         |
 
 ## Framework wise Usecases
 
@@ -264,7 +267,7 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | 🤔 DeepKnowledge                   | 🧠 Research                                      | This agent performs iterative searches through its knowledge base, breaking down complex queries into sub-questions and synthesizing comprehensive answers. It uses Agno docs for demonstration and is designed for deep reasoning and exploration. | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/agno-agi/agno/blob/main/cookbook/examples/agents/deep_knowledge.py)             |
 | 📚 Book Recommendation Agent       | 🧠 Publishing & Media                            | An intelligent agent that provides personalized book suggestions using literary data, reader preferences, reviews, and release info.                                                                                                                | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/agno-agi/agno/blob/main/cookbook/examples/agents/book_recommendation.py)        |
 | 🏠 MCP Airbnb Agent                | 🛎️ Hospitality                                 | Create an AI Agent using MCP and Llama 4 to search Airbnb listings with filters like workspace & transport proximity.                                                                                                                               | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/agno-agi/agno/blob/main/cookbook/examples/agents/airbnb_mcp.py)                 |
-| 🤖 Assist	 Agent                   | 🧠 AI Framework                                  | An AI agent using GPT-4o to answer questions about the Agno framework with hybrid search and embedded knowledge.                                                                                                                                    | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/agno-agi/agno/blob/main/cookbook/examples/agents/agno_assist.py)                |
+| 🤖 Assist Agent                   | 🧠 AI Framework                                  | An AI agent using GPT-4o to answer questions about the Agno framework with hybrid search and embedded knowledge.                                                                                                                                    | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/agno-agi/agno/blob/main/cookbook/examples/agents/agno_assist.py)                |
 
 ### **Framework Name**: **Langgraph**
 
@@ -294,10 +297,6 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | 🧠 **Self-RAG**               | 🧠 AI / Information Retrieval | Learn to implement Self-RAG, where the system reflects on its responses and retrieves additional information if necessary, enhancing the accuracy and relevance of generated content.                                                              | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag.ipynb)                       |
 | 🧠 **Self-RAG (Local)**       | 🧠 AI / Information Retrieval | This tutorial demonstrates how to implement Self-RAG using local models and data sources, enabling offline reflection and retrieval processes.                                                                                                     | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag_local.ipynb)         |
 
-
-
-
-
 ---
 
 ## 🤝 Contributing
@@ -318,6 +317,6 @@ This repository is licensed under the MIT License. See the [LICENSE](LICENSE) fi
 
 ---
 
-## 🚀 Let's Build Together!
+## 🚀 Let's Build Together
 
 Feel free to share this repository with your network and star ⭐ it if you find it useful. Let’s collaborate to create the ultimate resource for AI agent use cases!
