@@ -66,6 +66,7 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | **Vibe Hacking Agent**                | Cybersecurity    | Autonomous Multi-Agent Based Red Team Testing Service.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PurpleAILAB/Decepticon) |
 | **MediSuite-Ai-Agent**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         | 
 | **Lina-Egyptian-Medical-Chatbot**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         |
+| **Gpt Agent**                      | Computer Automation | Gpt agent can think and act, proactively choosing from a toolbox of agentic skills to complete tasks for you using its own computer just like manus ai. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/iris-networks/gpt-agent)                                                      |
 
 ## Framework wise Usecases
 
