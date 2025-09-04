@@ -4,6 +4,16 @@
 
 ![img](images/AIAgentUseCase.jpg)
 
+<!-- Keep these links. Translations will automatically update with the README. -->
+[Deutsch](https://zdoc.app/de/ashishpatel26/500-AI-Agents-Projects) | 
+[Español](https://zdoc.app/es/ashishpatel26/500-AI-Agents-Projects) | 
+[français](https://zdoc.app/fr/ashishpatel26/500-AI-Agents-Projects) | 
+[日本語](https://zdoc.app/ja/ashishpatel26/500-AI-Agents-Projects) | 
+[한국어](https://zdoc.app/ko/ashishpatel26/500-AI-Agents-Projects) | 
+[Português](https://zdoc.app/pt/ashishpatel26/500-AI-Agents-Projects) | 
+[Русский](https://zdoc.app/ru/ashishpatel26/500-AI-Agents-Projects) | 
+[中文](https://zdoc.app/zh/ashishpatel26/500-AI-Agents-Projects)
+
 A curated collection of AI agent use cases across industries, showcasing practical applications and linking to open-source projects for implementation. Explore how AI agents are transforming industries like healthcare, finance, education, and more! 🤖✨
 
 ---
