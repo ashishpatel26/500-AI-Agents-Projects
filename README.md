@@ -10,16 +10,16 @@ A curated collection of AI agent use cases across industries, showcasing practic
 
 ## 📋 Table of Contents
 
-- [Introduction](#introduction)
+- [Introduction](#-introduction)
 - [Industry Usecase](#-industry-usecase-mindmap)
-- [Use Case Table](#use-case-table)
+- [Use Case Table](#-use-case-table)
 - [Framework Wise UseCase](#framework-wise-usecases)
   - [CrewAI UseCase](#framework-name-crewai)
   - [AutoGen UseCase](#framework-name-autogen)
   - [Agno UseCase](#framework-name-agno)
   - [Langgraph UseCase](#framework-name-langgraph)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
