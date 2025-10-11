@@ -1,39 +1,39 @@
-# Contributing to 500-AI-Agents-Projects
+# 貢獻指南 - 500-AI-Agents-Projects
 
-Welcome — this repository collects 500 AI agent projects, templates, demos, and integrations. Thank you for helping grow a practical, reproducible, and responsible catalog of agent work. This document is tuned to the AI-agent focus of the project: reproducibility, model/data hygiene, evaluation, and safety.
+歡迎 — 本儲存庫收集了 500 個 AI 代理專案、範本、演示和整合。感謝您協助建立一個實用、可重現且負責任的代理工作目錄。本文件針對專案的 AI 代理重點進行調整：可重現性、模型/資料衛生、評估和安全性。
 
-Quick summary
-- Add small, runnable, well-documented agent examples and templates.
-- Prefer reproducible demos and small checkpoints or external download scripts.
-- Follow the folder schema and metadata so projects are discoverable and automatable.
-- Pay attention to license, data provenance, and ethical/safety notes.
-
----
-
-## What to contribute
-- New agent projects (single- or multi-agent; code, notebooks, or demos).
-- Templates/boilerplates for agent types (reactive, planning-based, learning agents, RL, LLM-based, etc.).
-- Integrations (environments, simulators, observability / logging tools).
-- Shared tooling (evaluation harnesses, metrics, benchmark suites, dataset loaders).
-- Docs, reproducible experiments, visualization utilities, or lightweight datasets (or links to them).
-
-If your contribution is large (new category, many projects, major refactor) please open an issue first to coordinate placement and naming.
+## 快速摘要
+- 新增小型、可執行、文件完善的代理範例和範本。
+- 優先使用可重現的演示和小型檢查點或外部下載腳本。
+- 遵循資料夾架構和元資料，使專案可被發現和自動化。
+- 注意授權、資料來源和倫理/安全注意事項。
 
 ---
 
-## Project folder requirements (must-have)
-Each agent project added must include the following at the top level of its folder:
+## 可以貢獻的內容
+- 新的代理專案（單一或多代理；程式碼、筆記本或演示）。
+- 代理類型的範本/樣板（反應式、基於規劃的、學習代理、強化學習、基於 LLM 等）。
+- 整合（環境、模擬器、可觀測性/日誌工具）。
+- 共享工具（評估工具、指標、基準測試套件、資料集載入器）。
+- 文件、可重現的實驗、視覺化工具或輕量級資料集（或其連結）。
 
-- README.md — concise description, intended use-case, quick start with exact commands, expected output, and runtime (CPU/GPU/time).
-- LICENSE or a note referencing repository root LICENSE (see root LICENSE).
-- requirements.txt, pyproject.toml, or environment.yml (pin critical dependency versions).
-- One or more runnable examples (script or notebook) that reproduce the core behavior.
-  - Provide minimal example(s) that run in <10 minutes on a modest machine where possible.
-- tests/ or a smoke-test script with instructions to run them.
-- metadata.yaml or metadata.json (see example below).
-- small models / datasets should be included only if tiny. Prefer external hosting (Hugging Face, S3, Google Drive) with a download script.
+如果您的貢獻規模較大（新類別、多個專案、重大重構），請先開啟一個 issue 以協調放置位置和命名。
 
-Example metadata schema (recommended)
+---
+
+## 專案資料夾要求（必備）
+每個新增的代理專案必須在其資料夾的頂層包含以下內容：
+
+- README.md — 簡潔的描述、預期用例、包含確切指令的快速開始、預期輸出和執行時間（CPU/GPU/時間）。
+- LICENSE 或引用儲存庫根目錄 LICENSE 的註記（參見根目錄 LICENSE）。
+- requirements.txt、pyproject.toml 或 environment.yml（固定關鍵依賴版本）。
+- 一個或多個可執行的範例（腳本或筆記本），可重現核心行為。
+  - 盡可能提供可在普通機器上於 <10 分鐘內執行的最小範例。
+- tests/ 或帶有執行說明的冒煙測試腳本。
+- metadata.yaml 或 metadata.json（參見下方範例）。
+- 小型模型/資料集僅在極小的情況下才應包含。優先使用外部託管（Hugging Face、S3、Google Drive）並提供下載腳本。
+
+### 範例元資料架構（建議）
 ```yaml
 title: quick-chatbot-agent
 author: Your Name <you@example.com>
@@ -52,66 +52,66 @@ requirements: requirements.txt
 
 ---
 
-## Naming & layout conventions
-- Folder names: lowercase, hyphen-separated (e.g., multi-agent-pursuit).
-- Place one logical project per folder.
-- Keep demos and notebooks near the code: demo.ipynb and run_demo.py in the project root.
-- Avoid committing large binaries. Use .gitattributes or .gitignore to keep repository clean.
+## 命名與佈局慣例
+- 資料夾名稱：小寫，使用連字號分隔（例如：multi-agent-pursuit）。
+- 每個資料夾放置一個邏輯專案。
+- 將演示和筆記本放在程式碼附近：demo.ipynb 和 run_demo.py 放在專案根目錄。
+- 避免提交大型二進位檔案。使用 .gitattributes 或 .gitignore 保持儲存庫整潔。
 
 ---
 
-## Reproducibility & experiments
-- Include seed values, environment variables, and exact dependency versions.
-- Provide a minimal run command and expected output sample.
-- For stochastic experiments, include evaluation scripts and deterministic seeds or checkpoints.
-- If results require large compute or private data, include a small reproducible “toy” example that demonstrates the same pipeline on tiny inputs.
+## 可重現性與實驗
+- 包含種子值、環境變數和確切的依賴版本。
+- 提供最小執行指令和預期輸出範例。
+- 對於隨機實驗，包含評估腳本和確定性種子或檢查點。
+- 如果結果需要大量計算或私人資料，包含一個小型可重現的「玩具」範例，在極小輸入上演示相同的流程。
 
 ---
 
-## Models, datasets & large files policy
-- Don’t add large datasets or model checkpoints directly. Instead:
-  - Provide a download script (download.sh / download.py) that fetches artifacts from a stable host (Hugging Face, S3, Zenodo).
-  - Document the expected location/path after download.
-- Clearly state dataset licenses, attribution, and any usage restrictions.
-- When linking to external model weights provide their license and any fine-tuning provenance.
+## 模型、資料集與大型檔案政策
+- 不要直接新增大型資料集或模型檢查點。而是：
+  - 提供一個下載腳本（download.sh / download.py），從穩定的主機（Hugging Face、S3、Zenodo）獲取工件。
+  - 記錄下載後的預期位置/路徑。
+- 清楚說明資料集授權、歸屬和任何使用限制。
+- 連結到外部模型權重時，提供其授權和任何微調來源。
 
 ---
 
-## Code style, documentation & tests
-- Python: follow PEP 8, add a linter config (.flake8, pyproject.toml with [tool.black] or similar).
-- JS/TS: provide ESLint/Prettier configs where relevant.
-- Document complex algorithms with short docstrings and references.
-- Add unit or integration tests when possible. Include a lightweight smoke test that CI can run quickly.
+## 程式碼風格、文件與測試
+- Python：遵循 PEP 8，新增 linter 配置（.flake8、帶有 [tool.black] 的 pyproject.toml 或類似配置）。
+- JS/TS：在相關情況下提供 ESLint/Prettier 配置。
+- 用簡短的文檔字串和參考文獻記錄複雜的演算法。
+- 盡可能新增單元或整合測試。包含一個輕量級的冒煙測試，CI 可以快速執行。
 
 ---
 
-## Evaluation & metrics
-- Include an evaluation script that produces metrics (accuracy, reward, latency).
-- State measurement conditions (hardware, seeds).
-- Where applicable, include latency and memory cost alongside performance metrics.
+## 評估與指標
+- 包含一個產生指標（準確度、獎勵、延遲）的評估腳本。
+- 說明測量條件（硬體、種子）。
+- 在適用的情況下，在效能指標旁邊包含延遲和記憶體成本。
 
 ---
 
-## CI / GitHub Actions recommendations
-- If adding workflows, put them under .github/workflows and ensure expensive jobs are optional or use small inputs.
-- Recommended checks: lint, unit tests, smoke demos. Heavy training jobs should be omitted or gated/opt-in.
+## CI / GitHub Actions 建議
+- 如果新增工作流程，請將其放在 .github/workflows 下，並確保昂貴的工作是可選的或使用小輸入。
+- 建議的檢查：lint、單元測試、冒煙演示。應省略或限制/選擇加入的重型訓練工作。
 
 ---
 
-## PR process and checklist
-Before opening a PR:
-- [ ] Fork and create a branch: feat/<short-desc> or fix/<short-desc>
-- [ ] Update README and metadata
-- [ ] Include tests or a smoke-test demonstration
-- [ ] Ensure no secrets or private data are included
-- [ ] Confirm license compatibility for added assets
+## PR 流程與檢查清單
+在開啟 PR 之前：
+- [ ] Fork 並建立分支：feat/<簡短描述> 或 fix/<簡短描述>
+- [ ] 更新 README 和元資料
+- [ ] 包含測試或冒煙測試演示
+- [ ] 確保不包含機密或私人資料
+- [ ] 確認新增資產的授權相容性
 
-PR description should include:
-- What changed and why
-- How to run the example(s) and tests
-- Links to related issues or external artifacts (datasets, model hosts)
+PR 描述應包含：
+- 變更內容和原因
+- 如何執行範例和測試
+- 相關 issue 或外部工件（資料集、模型主機）的連結
 
-Suggested minimal PR template (add to .github/PULL_REQUEST_TEMPLATE.md if helpful):
+### 建議的最小 PR 範本（如有幫助，可新增到 .github/PULL_REQUEST_TEMPLATE.md）：
 ```markdown
 ## Summary
 Short description of change
@@ -128,47 +128,43 @@ Short description of change
 
 ---
 
-## Security, secrets & responsible disclosure
-- Never commit secrets, private keys, or API tokens.
-- If you discover a security vulnerability, do not open a public issue. Contact maintainers privately (see repository contact info) or use GitHub's private security advisory.
+## 安全性、機密與負責任的揭露
+- 永遠不要提交機密、私鑰或 API 令牌。
+- 如果您發現安全漏洞，請不要開啟公開 issue。私下聯繫維護者（參見儲存庫聯絡資訊）或使用 GitHub 的私人安全諮詢。
 
 ---
 
-## Ethics, fairness & safety
-AI agents can amplify harms. When contributing:
-- Include an explicit "Ethical considerations" or "Safety notes" section in the README if the agent interacts with people, makes decisions, or processes personal data.
-- State potential biases, failure modes, and appropriate usage guidance.
-- Avoid shipping models trained on clearly disallowed data (private or scraped personal content without consent).
-- Prefer human-in-the-loop defaults for high-risk demos and clearly mark such demos as not production-ready.
+## 倫理、公平與安全
+AI 代理可能放大危害。在貢獻時：
+- 如果代理與人互動、做出決策或處理個人資料，請在 README 中包含明確的「倫理考量」或「安全注意事項」章節。
+- 說明潛在偏見、失敗模式和適當的使用指引。
+- 避免運送在明顯不允許的資料上訓練的模型（未經同意的私人或抓取的個人內容）。
+- 對於高風險演示，優先使用人在迴路中的預設值，並清楚標記此類演示為非生產就緒。
 
 ---
 
-## Licensing and attribution
-- Respect upstream licenses for models, code, and datasets. Include attribution and license text where required.
-- If the project uses third-party models/datasets, list their license and link to the source.
+## 授權與歸屬
+- 尊重模型、程式碼和資料集的上游授權。在需要的地方包含歸屬和授權文字。
+- 如果專案使用第三方模型/資料集，列出其授權並連結到來源。
 
 ---
 
-## Communication & review
-- Maintainers will review PRs and may request changes. Please reply to review comments and push updates.
-- For large or disruptive changes, maintainers may ask for staged PRs to ease review.
+## 溝通與審查
+- 維護者將審查 PR 並可能要求變更。請回覆審查評論並推送更新。
+- 對於大型或破壞性變更，維護者可能要求分階段 PR 以簡化審查。
 
 ---
 
-## Contributor support & contact
-If you need early feedback:
-- Open an issue describing your planned contribution with the following: summary, folder name, and minimal example of what you plan to add.
-- For urgent or private matters, use the contact method listed in the repository (owner profile / repo settings).
+## 貢獻者支援與聯絡
+如果您需要早期回饋：
+- 開啟一個 issue，描述您計劃的貢獻，包含以下內容：摘要、資料夾名稱，以及您計劃新增的最小範例。
+- 對於緊急或私人事務，請使用儲存庫中列出的聯絡方式（所有者個人資料/儲存庫設定）。
 
 ---
 
-## Code of Conduct
-By contributing, you agree to the project's Code of Conduct. Be respectful, constructive, and collaborative.
+## 行為準則
+透過貢獻，您同意專案的行為準則。請保持尊重、建設性和協作性。
 
 ---
 
-<<<<<<< HEAD
-Thank you for contributing to 500-AI-Agents-Projects — your examples, templates, and tools make the agent community stronger and more reproducible.
-=======
-Thank you for contributing to 500-AI-Agents-Projects — your examples, templates, and tools make the agent community stronger and more reproducible.
->>>>>>> f5a092190b226a6723718d7680aa689f1d2b64bc
+感謝您對 500-AI-Agents-Projects 的貢獻 — 您的範例、範本和工具使代理社群更強大、更可重現。
