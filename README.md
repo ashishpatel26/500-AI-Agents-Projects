@@ -10,16 +10,16 @@ A curated collection of AI agent use cases across industries, showcasing practic
 
 ## 📋 Table of Contents
 
-- [Introduction](#introduction)
+- [Introduction](#-introduction)
 - [Industry Usecase](#-industry-usecase-mindmap)
-- [Use Case Table](#use-case-table)
+- [Use Case Table](#-use-case-table)
 - [Framework Wise UseCase](#framework-wise-usecases)
   - [CrewAI UseCase](#framework-name-crewai)
   - [AutoGen UseCase](#framework-name-autogen)
   - [Agno UseCase](#framework-name-agno)
   - [Langgraph UseCase](#framework-name-langgraph)
-- [Contributing](#contributing)
-- [License](#license)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
@@ -54,7 +54,7 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | **Factory Process Monitoring Agent**  | Manufacturing    | Monitors production lines and ensures quality control.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/yuchenxia/llm4ias)                                                                             |
 | **Property Pricing Agent**            | Real Estate      | Analyzes market trends to determine property prices.     | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/AleksNeStu/ai-real-estate-assistant)                                                           |
 | **Smart Farming Assistant**           | Agriculture      | Provides insights on crop health and yield predictions.  | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/mohammed97ashraf/LLM_Agri_Bot)                                                                 |
-| **Energy Demand Forecasting Agent**   | Energy           | Predicts energy usage to optimize grid management.       | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/yecchen/MIRAI)                                                                                 |
+| **International Event Forecasting**   | Geopolitics           | Evaluates LLM agents for international relations forecasting.       | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/yecchen/MIRAI)                                                                                 |
 | **Content Personalization Agent**     | Entertainment    | Recommends personalized media based on preferences.      | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/crosleythomas/MirrorGPT)                                                                       |
 | **Legal Document Review Assistant**   | Legal            | Automates document review and highlights key clauses.    | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/firica/legalai)                                                                                |
 | **Recruitment Recommendation Agent**  | Human Resources  | Suggests best-fit candidates for job openings.           | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/sentient-engineering/jobber)                                                                   |
