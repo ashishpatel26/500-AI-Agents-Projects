@@ -1,0 +1,173 @@
+# Dubai Real Estate Lead Generation Workflow Configuration
+
+workflow:
+  name: "Dubai Real Estate Lead Generation"
+  version: "1.0.0"
+  mode: "continuous"  # continuous or batch
+  schedule: "0 */6 * * *"  # Run every 6 hours (cron format)
+
+lead_qualification:
+  min_budget_aed: 600000
+  max_budget_aed: 50000000
+  property_types:
+    - "apartment"
+    - "flat"
+    - "studio"
+  bedroom_range:
+    min: 1
+    max: 2
+  property_status:
+    - "off-plan"
+    - "ready"
+  
+target_areas:
+  - "Azizi Riviera"
+  - "Downtown Dubai"
+  - "Business Bay"
+  - "Dubai Marina"
+  - "JBR (Jumeirah Beach Residence)"
+  - "Palm Jumeirah"
+  - "Dubai Creek Harbour"
+  - "Dubai Hills Estate"
+  - "Arabian Ranches"
+  - "Jumeirah Village Circle (JVC)"
+
+data_sources:
+  linkedin:
+    enabled: true
+    search_keywords:
+      - "Dubai property buyer"
+      - "Dubai real estate investment"
+      - "Dubai mortgage inquiry"
+      - "Looking for apartment in Dubai"
+    max_results_per_search: 50
+    
+  property_finder:
+    enabled: true
+    base_url: "https://www.propertyfinder.ae"
+    search_params:
+      location: "dubai"
+      category: "residential-for-sale"
+    
+  bayut:
+    enabled: true
+    base_url: "https://www.bayut.com"
+    search_params:
+      location: "dubai"
+      purpose: "for-sale"
+    
+  dubizzle:
+    enabled: true
+    base_url: "https://dubai.dubizzle.com/property-for-sale"
+    categories:
+      - "apartments-flats"
+      - "residential-units"
+
+agents:
+  lead_scraper:
+    role: "Lead Scraper Agent"
+    goal: "Extract high-quality property buyer leads from multiple sources"
+    backstory: "Expert web scraper specialized in Dubai real estate market"
+    verbose: true
+    allow_delegation: false
+    
+  verification_agent:
+    role: "Property Verification Agent"
+    goal: "Verify property listings and validate lead authenticity"
+    backstory: "Dubai Land Department specialist with deep knowledge of property regulations"
+    verbose: true
+    allow_delegation: false
+    
+  qualification_agent:
+    role: "Lead Qualification Agent"
+    goal: "Filter and qualify leads based on predefined criteria"
+    backstory: "Senior real estate analyst with expertise in lead scoring"
+    verbose: true
+    allow_delegation: false
+    
+  crm_integration_agent:
+    role: "CRM Integration Agent"
+    goal: "Seamlessly add qualified leads to CRM systems"
+    backstory: "CRM specialist with expertise in data integration"
+    verbose: true
+    allow_delegation: false
+    
+  communication_agent:
+    role: "Communication Agent"
+    goal: "Send personalized messages to qualified leads"
+    backstory: "Marketing automation expert specializing in personalized outreach"
+    verbose: true
+    allow_delegation: false
+    
+  analytics_agent:
+    role: "Analytics & Reporting Agent"
+    goal: "Generate comprehensive dashboards and insights"
+    backstory: "Data analyst with expertise in real estate market trends"
+    verbose: true
+    allow_delegation: false
+
+communication:
+  email:
+    enabled: true
+    template: |
+      Hello {name},
+      
+      I hope this message finds you well. I noticed your interest in Dubai real estate, 
+      particularly in the {area} area.
+      
+      I have an excellent property match for you:
+      - Location: {property_location}
+      - Type: {property_type}
+      - Bedrooms: {bedrooms}
+      - Price: AED {price}
+      
+      Would you be interested in scheduling a viewing or learning more about this opportunity?
+      
+      Best regards,
+      Dubai Real Estate Team
+      
+  whatsapp:
+    enabled: true
+    template: |
+      Hi {name}! 👋
+      
+      Found a perfect match for you in {area}:
+      🏠 {property_type} | {bedrooms} BHK
+      💰 AED {price}
+      📍 {property_location}
+      
+      Interested in a viewing? Reply YES to schedule!
+
+dashboard:
+  metrics:
+    - "total_leads_found"
+    - "leads_qualified"
+    - "conversion_rate"
+    - "follow_up_responses"
+    - "properties_in_demand"
+    - "average_budget"
+    - "top_areas"
+  
+  refresh_interval: 3600  # seconds
+  export_formats:
+    - "html"
+    - "pdf"
+    - "json"
+
+error_handling:
+  max_retries: 3
+  retry_delay: 5  # seconds
+  exponential_backoff: true
+  log_errors: true
+  alert_on_failure: true
+  
+rate_limiting:
+  requests_per_minute: 30
+  delay_between_requests: 2  # seconds
+  
+logging:
+  level: "INFO"
+  file: "logs/workflow.log"
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  rotation: "daily"
+  retention_days: 30

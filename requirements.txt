@@ -2,3 +2,38 @@ pytest==7.4.3
 pytest-cov==4.1.0
 pyyaml==6.0.1
 requests==2.31.0
+
+# CrewAI and AI Framework
+crewai==0.28.8
+crewai-tools==0.1.6
+langchain==0.1.20
+langchain-openai==0.1.7
+langchain-community==0.0.38
+
+# Web Scraping
+beautifulsoup4==4.12.3
+selenium==4.18.1
+scrapy==2.11.1
+playwright==1.42.0
+
+# Data Processing
+pandas==2.2.1
+numpy==1.26.4
+openpyxl==3.1.2
+
+# API Integrations
+gspread==5.12.4
+oauth2client==4.1.3
+twilio==9.0.4
+airtable-python-wrapper==0.15.3
+
+# n8n Integration
+httpx==0.27.0
+
+# Environment Management
+python-dotenv==1.0.1
+
+# Utilities
+phonenumbers==8.13.31
+email-validator==2.1.1
+python-dateutil==2.9.0
