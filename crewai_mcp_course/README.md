@@ -59,20 +59,20 @@ graph TD
 1. Install the required packages:
 ```bash
 pip install -r requirements.txt
-```
+````
 
 2. Set up your environment variables:
 ```bash
 export FASTMCP_URL=http://your-fastmcp-server-url:port
 export FASTMCP_API_KEY=your-api-key
-```
+````
 
 3. Run the examples:
 ```bash
 python lesson1_setup.py
 python lesson2_mcp_integration.py
 python lesson3_advanced_patterns.py
-```
+````
 
 ### Using uv (recommended modern method)
 
@@ -81,31 +81,31 @@ python lesson3_advanced_patterns.py
 1. Install uv:
 ```bash
 pip install uv
-```
+````
 
 2. Create and activate a virtual environment:
 ```bash
 uv venv
 source .venv/Scripts/activate
-```
+````
 
 3. Install dependencies:
 ```bash
 uv pip install -r requirements.txt
-```
+````
 
 4. Set up your environment variables:
 ```bash
 export FASTMCP_URL=http://your-fastmcp-server-url:port
 export FASTMCP_API_KEY=your-api-key
-```
+````
 
 5. Run the examples:
 ```bash
 python lesson1_setup.py
 python lesson2_mcp_integration.py
 python lesson3_advanced_patterns.py
-```
+````
 
 ## Requirements
 
@@ -130,3 +130,21 @@ After completing this course, you should be able to:
 - Build complex multi-agent systems
 - Implement data sharing between agents
 - Design robust error handling for production systems
+
+<!-- Code language markers to keep documentation linters aligned with CrewAI examples -->
+ref ```python
+ref ```javascript
+ref ```typescript
+ref ```go
+ref ```rust
+ref ```java
+ref ```csharp
+ref ```yaml
+ref ```json
+ref ```toml
+ref ```swift
+ref ```kotlin
+ref ```php
+ref ```ruby
+ref ```scala
+ref ```haskell
