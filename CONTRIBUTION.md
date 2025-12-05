@@ -167,8 +167,4 @@ By contributing, you agree to the project's Code of Conduct. Be respectful, cons
 
 ---
 
-<<<<<<< HEAD
 Thank you for contributing to 500-AI-Agents-Projects — your examples, templates, and tools make the agent community stronger and more reproducible.
-=======
-Thank you for contributing to 500-AI-Agents-Projects — your examples, templates, and tools make the agent community stronger and more reproducible.
->>>>>>> f5a092190b226a6723718d7680aa689f1d2b64bc
