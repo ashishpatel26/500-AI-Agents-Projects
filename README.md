@@ -309,7 +309,7 @@ Contributions are welcome! 🎉 Here's how you can help:
 2. Add a new use case or improve an existing one.
 3. Submit a pull request with your changes.
 
-Please follow our [Contributing Guidelines](CONTRIBUTING.md) for more details.
+Please follow our [Contributing Guidelines](CONTRIBUTION.md) for more details.
 
 ---
 
