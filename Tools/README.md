@@ -84,7 +84,13 @@ Tools/
 **Quick Command**: `CREATE AGENT: [Name] PURPOSE: [Mission]`
 **Load**: `PROMPT.md` for daily use
 
-#### 2. Perplexity Researcher
+#### 2. Agent Migration Enforcer
+**Folder**: `Agent_Migration_Enforcer/`
+**Purpose**: Convert agents from any platform to Claude format
+**Quick Command**: `CONVERT AGENT: [paste agent prompt]`
+**Load**: `PROMPT.md` for conversions
+
+#### 3. Perplexity Researcher
 **Folder**: `Perplexity_Researcher/`
 **Purpose**: Find exact sources with verified links (zero time waste)
 **Quick Commands**:
@@ -93,24 +99,37 @@ Tools/
 - `VALIDATION: [verify claim]`
 **Load**: `PROMPT.md` for searches
 
----
+#### 4. Citation Mapper ⭐ NEW
+**Folder**: `Mapper/`
+**Purpose**: MLA 9 citation formatting with tier verification
+**Quick Commands**:
+- `MAP: [URL or source]`
+- `BATCH MAP: [list of sources]`
+- `BUILD WORKS CITED: [all sources]`
+**Load**: `PROMPT.md` for daily citation tasks
+**Features**: URL verification, duplicate detection, tier classification
 
-### 🔨 Tools to Organize
+#### 5. Advanced Research Agent ⭐ NEW
+**Folder**: `Research/`
+**Purpose**: Multi-agent RAG-powered comprehensive research
+**Quick Commands**:
+- `RESEARCH: [topic] MODE: QUICK`
+- `RESEARCH: [topic] MODE: COMPREHENSIVE`
+- `VALIDATE: [claim]`
+- `GAP ANALYSIS: [draft]`
+**Load**: `PROMPT.md` for research tasks
+**Features**: Web scraper, academic searcher, standards navigator sub-agents
 
-#### Mapper/
-**Contents**: Citation mapping and MLA formatting tools
-**Status**: Needs organization into modular structure
-**Next Steps**: Create PROMPT.md + Full.md
-
-#### Research/
-**Contents**: Additional research utilities
-**Status**: Needs organization into modular structure
-**Next Steps**: Audit contents, create modular structure
-
-#### Writer/
-**Contents**: FSM writing and content generation tools
-**Status**: Needs organization into modular structure
-**Next Steps**: Create PROMPT.md + Full.md
+#### 6. FSM Content Writer ⭐ NEW
+**Folder**: `Writer/`
+**Purpose**: Generate FSM content with 7-element paragraph model
+**Quick Commands**:
+- `FSM: [topic] SOURCES: [research packet]`
+- `VERIFY: [draft content]`
+- `REVISE: [feedback]`
+- `COLLAB: [task] AGENTS: [agent list]`
+**Load**: `PROMPT.md` for writing tasks
+**Features**: Self-assessment (≥8.0/10), multi-agent collaboration
 
 ---
 
@@ -328,30 +347,35 @@ Agent_Creator (build new tools as needed)
 - ✅ Created Tools README
 - ✅ Updated CLAUDE.MD catalog
 
-### Future Updates
-- Organize Mapper/ tools
-- Organize Research/ tools
-- Organize Writer/ tools
-- Add new tools as needed
+### December 7, 2025
+- ✅ Organized Mapper/ tool (Citation Mapper with MLA 9 formatting)
+- ✅ Organized Research/ tool (Advanced Research Agent with RAG)
+- ✅ Organized Writer/ tool (FSM Content Writer with 7-element model)
+- ✅ Updated CLAUDE.MD catalog with new tools
+- ✅ Enhanced workflow V3.0 (Research → Mapper → Writer)
 
 ---
 
 ## 🎯 QUICK REFERENCE
 
 ```
-┌──────────────────────────────────────────────────────┐
-│              TOOLS QUICK REFERENCE                    │
-├──────────────────────────────────────────────────────┤
-│ NEED              │ TOOL              │ FILE          │
-├───────────────────┼───────────────────┼──────────────┤
-│ Build new agent   │ Agent_Creator     │ PROMPT.md    │
-│ Find sources      │ Perplexity_Res.   │ PROMPT.md    │
-│ Format citations  │ Mapper            │ TBD          │
-│ Write FSM content │ Writer            │ TBD          │
-├──────────────────────────────────────────────────────┤
-│ Daily use:        │ Load PROMPT.md    │ ~30 seconds  │
-│ Deep work:        │ Load Full.md      │ ~2 minutes   │
-└──────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────────────────┐
+│              TOOLS QUICK REFERENCE V3.0                            │
+├───────────────────────────────────────────────────────────────────┤
+│ NEED                  │ TOOL                  │ FILE              │
+├───────────────────────┼───────────────────────┼──────────────────┤
+│ Build new agent       │ Agent_Creator         │ PROMPT.md        │
+│ Convert agents        │ Agent_Migration       │ PROMPT.md        │
+│ Quick source finding  │ Perplexity_Researcher │ PROMPT.md        │
+│ Deep research + RAG   │ Advanced_Research ⭐  │ PROMPT.md        │
+│ Format citations      │ Citation_Mapper ⭐    │ PROMPT.md        │
+│ Write FSM content     │ FSM_Content_Writer ⭐ │ PROMPT.md        │
+├───────────────────────────────────────────────────────────────────┤
+│ Daily use:            │ Load PROMPT.md        │ ~15-30 seconds   │
+│ Deep work:            │ Load Full.md          │ ~1-2 minutes     │
+│                                                                    │
+│ ENHANCED WORKFLOW: Research → Mapper → Writer (45-60 min)        │
+└───────────────────────────────────────────────────────────────────┘
 ```
 
 ---
