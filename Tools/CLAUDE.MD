@@ -1,9 +1,10 @@
 # 📋 CLAUDE.MD - AGENT CATALOG
 **Fleet Technology Intelligence System - Agent Library**
 
-**Last Updated**: December 5, 2025
+**Last Updated**: December 7, 2025
 **Owner**: Veteran Fleet Technologies
 **Purpose**: Catalog and documentation for all AI agents in FSM workflow
+**Repository**: https://github.com/aztectech82-cell/500-AI-Agents-Projects
 
 ---
 
@@ -31,26 +32,37 @@ C:\Users\aztec\CLAUDE.MD\
 │   └── [Planning documents and roadmaps]
 │
 └── Tools/
-    ├── Agent_Creator/
-    │   ├── PROMPT.md (quick instruction - 12KB)
-    │   └── Agent_Creator_Enterprise_Full.md (full system - 33KB)
+    ├── CLAUDE.MD (this catalog)
+    ├── README.md (tools overview)
+    ├── MIGRATION_GUIDE.md (OneDrive migration instructions) ⭐NEW
+    ├── TOOLS_INDEX.md (complete inventory) ⭐NEW
+    ├── QUICK_START.md (60-second guide)
+    ├── SYSTEM_STATUS.md (system metrics)
     │
-    ├── Agent_Migration_Enforcer/
-    │   ├── PROMPT.md (quick instruction - 6KB)
-    │   └── Agent_Migration_Full.md (full system - 17KB)
+    ├── Agent_Creator/ ✅
+    │   ├── PROMPT.md (12KB)
+    │   └── Agent_Creator_Enterprise_Full.md (33KB)
     │
-    ├── Perplexity_Researcher/
-    │   ├── PROMPT.md (quick instruction - 2.7KB)
-    │   └── Perplexity_Researcher_Agent.md (full system - 24KB)
+    ├── Agent_Migration_Enforcer/ ✅
+    │   ├── PROMPT.md (6KB)
+    │   └── Agent_Migration_Full.md (17KB)
     │
-    ├── Mapper/
-    │   └── [Citation mapping tools]
+    ├── Perplexity_Researcher/ ✅
+    │   ├── PROMPT.md (2.7KB)
+    │   ├── Perplexity_Researcher_Agent.md (24KB)
+    │   └── Perplexity_Researcher_Enhanced_Full.md (33KB)
     │
-    ├── Research/
-    │   └── [Additional research utilities]
+    ├── Writer/ ⏳ PENDING MIGRATION
+    │   └── README.md (migration instructions)
+    │       [Awaiting: GPT Writer V3 from OneDrive]
     │
-    └── Writer/
-        └── [FSM writing tools]
+    ├── Mapper/ ⏳ PENDING MIGRATION
+    │   └── README.md (migration instructions)
+    │       [Awaiting: Citation Mapper from OneDrive]
+    │
+    └── Research/ ⏳ PENDING MIGRATION
+        └── README.md (migration instructions)
+            [Awaiting: Claude Validator from OneDrive]
 ```
 
 **Modular Structure Philosophy**:
@@ -193,6 +205,94 @@ VALIDATION: "Verify this claim: [statement]"
 - Eliminates: Homepage links, dead links, low-quality sources
 
 **Modular Advantage**: Load PROMPT.md for quick searches, reference full .md for comprehensive research protocols
+
+---
+
+## ⏳ PENDING MIGRATION (OneDrive Tools)
+
+### 4. GPT WRITER V3
+**Current Location**: `C:\Users\aztec\OneDrive\AI Finder_Veteran Fleet Technologies\NACFE Tools\Latest Test\GPT Writer Prompt V3.txt`
+**Future Location**: `Tools/Writer/`
+**Status**: ⏳ Awaiting Migration
+**Priority**: 🔴 Critical
+
+**Purpose**:
+FSM content generation with 7-element paragraph model and constitutional AI compliance.
+
+**Key Features**:
+- 7-element paragraph structure
+- Quality threshold: ≥8.0/10
+- Tier-1/2 source integration
+- MLA 9 citation formatting
+- Constitutional compliance enforcement
+
+**Commands** (after migration):
+- `FSM` - Generate FSM section
+- `COMPILE` - Compile multiple sections
+- `VERIFY` - Verify quality standards
+- `REVISE` - Revise based on feedback
+- `CONTINUE` - Continue previous work
+- `STATUS` - Check current status
+- `CHECKER` - Quality checker
+- `COLLAB` - Collaboration mode
+
+**Migration Instructions**:
+See `Tools/MIGRATION_GUIDE.md` for step-by-step instructions to migrate this tool from OneDrive.
+
+---
+
+### 5. CLAUDE VALIDATOR
+**Current Location**: `C:\Users\aztec\OneDrive\AI Finder_Veteran Fleet Technologies\NACFE Tools\3.0 Tools\Claude\Validator\Claude NACFE Validator & Gap Analyst.txt`
+**Future Location**: `Tools/Research/`
+**Status**: ⏳ Awaiting Migration
+**Priority**: 🔴 Critical
+
+**Purpose**:
+L1-L4 validation framework and gap analysis for FSM content quality assurance.
+
+**Key Features**:
+- L1 Gaps: Critical (HALT - must fix)
+- L2 Gaps: Important (fix before publish)
+- L3 Gaps: Minor (optional fix)
+- L4 Gaps: Informational (archive)
+- Constitutional compliance verification
+- Quality scoring (8.0/10 threshold)
+
+**Use When**:
+- Validating FSM drafts
+- Gap classification and analysis
+- Quality assurance before publication
+- Constitutional compliance checks
+
+**Migration Instructions**:
+See `Tools/MIGRATION_GUIDE.md` for step-by-step instructions to migrate this tool from OneDrive.
+
+---
+
+### 6. CITATION MAPPER
+**Current Location**: `C:\Users\aztec\OneDrive\AI Finder_Veteran Fleet Technologies\NACFE Tools\3.0 Tools\GPT Citation Mapper\citation_mapper_main.md`
+**Future Location**: `Tools/Mapper/`
+**Status**: ⏳ Awaiting Migration
+**Priority**: 🔴 High
+
+**Purpose**:
+MLA 9 citation formatting and reference management with Authority Tier System.
+
+**Key Features**:
+- MLA 9 format compliance
+- Authority Tier System (Tier-1/2/3 classification)
+- Automatic reference formatting
+- Source quality validation
+- QA benchmarks for citations
+
+**Use When**:
+- Formatting citations to MLA 9 standards
+- Tier classification of sources
+- Reference management for FSM sections
+- Publication-ready citation formatting
+
+**Migration Instructions**:
+See `Tools/MIGRATION_GUIDE.md` for step-by-step instructions to migrate this tool from OneDrive.
 
 ---
 
@@ -561,6 +661,18 @@ Examples:
 
 ## 📝 CHANGELOG
 
+### December 7, 2025 - V2.1 Repository Integration
+- ✅ Migrated complete system to GitHub repository
+- ✅ Created folder structure for pending tools (Writer/, Mapper/, Research/)
+- ✅ Added MIGRATION_GUIDE.md for OneDrive tool migration
+- ✅ Added TOOLS_INDEX.md for complete inventory
+- ✅ Created READMEs for all pending tool folders
+- ✅ Updated CLAUDE.MD with pending migration section
+- ✅ Documented GPT Writer V3 migration path
+- ✅ Documented Claude Validator migration path
+- ✅ Documented Citation Mapper migration path
+- ✅ Repository URL: https://github.com/aztectech82-cell/500-AI-Agents-Projects
+
 ### December 5, 2025 - V2.0 Release
 - ✅ Created Agent Creator Enterprise system with version control
 - ✅ Added automated continuous improvement system to Agent Creator
@@ -574,7 +686,11 @@ Examples:
 - ✅ Enabled strict version control with semantic versioning
 
 ### Future Updates
-- Will be logged here with version numbers and changes
+- ⏳ Migrate GPT Writer V3 from OneDrive
+- ⏳ Migrate Claude Validator from OneDrive
+- ⏳ Migrate Citation Mapper from OneDrive
+- ⏳ Test complete FSM workflow end-to-end
+- ⏳ Integrate advanced use cases from 500-AI-Agents-Projects
 
 ---
 
@@ -598,13 +714,15 @@ Examples:
 │ Find sources            │ Perplexity Researcher                  │
 │ Build new agent         │ Agent Creator                          │
 │ Convert agents          │ Agent Migration Enforcer               │
-│ Write FSM content       │ GPT Writer V3 (external)               │
-│ Validate content        │ Claude Validator (external)            │
-│ Format citations        │ Citation Mapper (external)             │
+│ Write FSM content       │ GPT Writer V3 (⏳ pending migration)    │
+│ Validate content        │ Claude Validator (⏳ pending migration) │
+│ Format citations        │ Citation Mapper (⏳ pending migration)  │
+│ Migrate tools           │ See MIGRATION_GUIDE.md                 │
 │ Process interviews      │ Transcript Analyzer (planned)          │
 ├─────────────────────────┴───────────────────────────────────────┤
-│ LOCATION: C:\Users\aztec\CLAUDE.MD\                              │
+│ REPOSITORY: github.com/aztectech82-cell/500-AI-Agents-Projects  │
 │ BACKUP: OneDrive\AI Finder_Veteran Fleet Technologies\NACFE Tools│
+│ MIGRATION: See Tools/MIGRATION_GUIDE.md                          │
 └─────────────────────────────────────────────────────────────────┘
 ```
 
