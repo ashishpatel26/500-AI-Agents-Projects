@@ -18,6 +18,7 @@ A curated collection of AI agent use cases across industries, showcasing practic
   - [AutoGen UseCase](#framework-name-autogen)
   - [Agno UseCase](#framework-name-agno)
   - [Langgraph UseCase](#framework-name-langgraph)
+  - [ADK-Rust UseCase](#framework-name-adk-rust)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -298,6 +299,17 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 
 
 
+
+### **Framework Name**: **ADK-Rust**
+
+[ADK-Rust](https://github.com/zavora-ai/adk-rust) is a production-ready AI agent development kit for Rust. It provides a flexible, modular framework for building AI agents with model-agnostic design (Gemini, OpenAI, Anthropic, DeepSeek), multiple agent types (LLM, Graph, Workflow, Realtime), MCP support, and built-in telemetry.
+
+| Use Case                           | Industry                                         | Description                                                                                                                                                                                                                                         | GitHub                                                                                                                                              |
+| ---------------------------------- | ------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🤖 Multi-Agent Chat                | 💻 Software Development                          | Build multi-agent systems where specialized agents collaborate to solve complex tasks.                                                                                                                                                               | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/zavora-ai/adk-rust/tree/main/examples/multi_agent) |
+| 🌐 Web Browsing Agent              | 🔎 Research / Automation                         | Autonomous web browsing agent that can navigate, search, and extract information from websites.                                                                                                                                                      | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/zavora-ai/adk-rust/tree/main/examples/browser) |
+| 📊 Realtime Streaming Agent        | 💬 Communication / Customer Service              | Build agents with realtime streaming responses for interactive applications.                                                                                                                                                                         | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/zavora-ai/adk-rust/tree/main/examples/realtime) |
+| 🔧 Tool-Using Agent                | 🛠️ Productivity                                  | Create agents that can use custom tools and MCP servers to extend their capabilities.                                                                                                                                                                | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/zavora-ai/adk-rust/tree/main/examples/tools) |
 
 ---
 
