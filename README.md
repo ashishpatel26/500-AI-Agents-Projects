@@ -128,6 +128,8 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | 🔄 Solving Multiple Tasks in a Sequence of Chats Initiated by a Single Agent       | 🔄 Workflow Automation | Automates sequential task-solving with a single initiating agent.                | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_multi_task_chats)       |
 | ⏳ Async-solving Multiple Tasks in a Sequence of Chats Initiated by a Single Agent | 🔄 Workflow Automation | Handles asynchronous task-solving in a sequence of chats initiated by one agent. | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_multi_task_async_chats) |
 | 🤝 Solving Multiple Tasks in a Sequence of Chats Initiated by Different Agents     | 🔄 Workflow Automation | Facilitates sequential task-solving with different agents initiating each chat.  | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchats_sequential_chats)      |
+| ✨ AI Code Polisher Agent | 🛠️ Code Quality & Refactoring | Automatically analyzes, refactors, and improves source code using an AI agent while preserving functionality and best practices. | [![GitHub](https://img.shields.io/badge/View-Project-black?logo=github)](https://github.com/supraja777/ai-code-polisher) |
+
 
 > **Nested Chats**
 
