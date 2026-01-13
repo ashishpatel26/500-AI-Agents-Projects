@@ -315,7 +315,24 @@ Please follow our [Contributing Guidelines](CONTRIBUTING.md) for more details.
 
 ## Star History
 
-<iframe style="width:100%;height:auto;min-width:600px;min-height:400px;" src="https://www.star-history.com/embed?secret=Z2hwX244bnU2MmN0bzlTJFkU2yDpSotLuKiNMEPqWV5VSNeNSgC2Z==#ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left" frameBorder="0"></iframe>
+<picture>
+  <source
+    media="(prefers-color-scheme: dark)"
+    srcset="
+      https://api.star-history.com/svg?repos=star-history/star-history&type=Date&theme=dark
+    "
+  />
+  <source
+    media="(prefers-color-scheme: light)"
+    srcset="
+      https://api.star-history.com/svg?repos=star-history/star-history&type=Date
+    "
+  />
+  <img
+    alt="Star History Chart"
+    src="https://api.star-history.com/svg?repos=star-history/star-history&type=Date"
+  />
+</picture>
 
 ---
 
