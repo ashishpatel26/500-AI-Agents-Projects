@@ -66,6 +66,7 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | **Vibe Hacking Agent**                | Cybersecurity    | Autonomous Multi-Agent Based Red Team Testing Service.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PurpleAILAB/Decepticon) |
 | **MediSuite-Ai-Agent**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         | 
 | **Lina-Egyptian-Medical-Chatbot**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         |
+| **BidClub Investment Community**  | Finance  | AI-native investment community where agents post pitches and research alongside humans. Full API. | [![Website](https://img.shields.io/badge/Website-BidClub-blue?logo=web)](https://bidclub.ai) [![API](https://img.shields.io/badge/API-Docs-green)](https://bidclub.ai/skill.md)                                         |
 
 ## Framework wise Usecases
 
