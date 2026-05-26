@@ -66,6 +66,8 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | **Vibe Hacking Agent**                | Cybersecurity    | Autonomous Multi-Agent Based Red Team Testing Service.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PurpleAILAB/Decepticon) |
 | **MediSuite-Ai-Agent**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         | 
 | **Lina-Egyptian-Medical-Chatbot**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         |
+| **LinkedIn Outreach Agent**        | Sales             | Generates personalized connection requests and multi-step follow-ups using Claude. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ashishpatel26/500-AI-Agents-Projects/tree/main/linkedin-outreach-agent) |
+
 
 ## Framework wise Usecases
 
@@ -295,8 +297,13 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | 🧠 **Self-RAG**               | 🧠 AI / Information Retrieval | Learn to implement Self-RAG, where the system reflects on its responses and retrieves additional information if necessary, enhancing the accuracy and relevance of generated content.                                                              | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag.ipynb)                       |
 | 🧠 **Self-RAG (Local)**       | 🧠 AI / Information Retrieval | This tutorial demonstrates how to implement Self-RAG using local models and data sources, enabling offline reflection and retrieval processes.                                                                                                     | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag_local.ipynb)         |
 
+### **Framework Name**: **Anthropic Claude**
 
+> **UseCase**
 
+| Use Case | Industry | Description | GitHub |
+| :--- | :--- | :--- | :--- |
+| 🤖 LinkedIn Outreach Agent | 💼 Sales | Generates personalized connection requests and multi-step follow-up sequences using Claude. | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/ashishpatel26/500-AI-Agents-Projects/tree/main/linkedin-outreach-agent) |
 
 
 ---
