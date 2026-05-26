@@ -1,0 +1,14 @@
+title: linkedin-outreach-agent
+author: ahteshamsalamatansari
+language: python
+tags:
+  - llm
+  - agent
+  - outreach
+  - linkedin
+  - claude
+  - personalization
+license: MIT
+entrypoint: run_demo.py
+requirements: requirements.txt
+model: claude-opus-4-7
