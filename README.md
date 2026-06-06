@@ -9,6 +9,7 @@ A curated collection of AI agent use cases across industries, showcasing practic
 ---
 
 ## 📋 Table of Contents
+- [Asynkor](https://github.com/asynkor/asynkor) - Coordination layer for AI agent teams. File leasing, shared memory, cross-machine sync. One MCP server for Claude Code, Cursor, Windsurf.
 
 - [Introduction](#introduction)
 - [Industry Usecase](#-industry-usecase-mindmap)
