@@ -18,6 +18,7 @@ A curated collection of AI agent use cases across industries, showcasing practic
   - [AutoGen UseCase](#framework-name-autogen)
   - [Agno UseCase](#framework-name-agno)
   - [Langgraph UseCase](#framework-name-langgraph)
+  - [Hive UseCase](#framework-name-hive)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -297,7 +298,16 @@ Whether you're a developer, researcher, or business enthusiast, this repository 
 | 🧠 **Self-RAG**               | 🧠 AI / Information Retrieval | Learn to implement Self-RAG, where the system reflects on its responses and retrieves additional information if necessary, enhancing the accuracy and relevance of generated content.                                                              | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag.ipynb)                       |
 | 🧠 **Self-RAG (Local)**       | 🧠 AI / Information Retrieval | This tutorial demonstrates how to implement Self-RAG using local models and data sources, enabling offline reflection and retrieval processes.                                                                                                     | [![AI Agent Code - Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag_local.ipynb)         |
 
+### **Framework Name**: **Hive**
 
+| Use Case                         | Industry                | Description                                                                                  | GitHub                                                                                                                                              |
+| -------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 🔍 Competitive Content Agent     | 📊 Business Intelligence | Gathers and analyzes competitive landscape data to provide strategic content insights.       | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/aden-hive/hive/tree/main/exports/competitive_content_agent) |
+| 🤝 Lead Routing Agent            | 💼 Sales                | Routes and qualifies leads based on criteria, automating the sales pipeline workflow.        | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/aden-hive/hive/tree/main/exports/lead_routing_agent) |
+| 📱 Reddit Engagement Agent       | 📢 Marketing            | Monitors Reddit and engages with relevant discussions to drive community engagement.         | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/aden-hive/hive/tree/main/exports/reddit_engagement_agent) |
+| 🧾 Invoice Processing Agent      | 💰 Finance              | Automates invoice data extraction, validation, and processing workflows.                    | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/aden-hive/hive/tree/main/exports/invoice_processing_agent) |
+| 📊 SP500 AI Analyzer             | 💹 Finance              | Analyzes S&P 500 companies using AI to surface investment insights and trends.              | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/aden-hive/hive/tree/main/exports/sp500_ai_analyzer) |
+| 🐦 X Reply Agent                 | 📱 Social Media         | Monitors and responds to relevant conversations on X (Twitter) automatically.               | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/aden-hive/hive/tree/main/exports/x_reply_agent) |
 
 
 
