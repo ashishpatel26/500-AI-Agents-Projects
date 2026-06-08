@@ -1,0 +1,11 @@
+title: meeting-notes-agent
+description: Converts meeting transcripts into structured notes with action items and decisions
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [productivity, meetings, summarization, action-items]
+industry: productivity
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

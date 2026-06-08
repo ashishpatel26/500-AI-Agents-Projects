@@ -1,0 +1,11 @@
+title: code-review-agent
+description: Reviews code for bugs, security issues, performance, and style violations
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [code-review, software-development, security, quality]
+industry: software-development
+difficulty: beginner
+llm: gpt-4o
+entrypoint: agent.py
+requirements: requirements.txt

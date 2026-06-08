@@ -1,0 +1,11 @@
+title: news-summarizer-agent
+description: Fetches news on any topic and produces a structured briefing with key themes
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [news, summarization, media, nlp]
+industry: media
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

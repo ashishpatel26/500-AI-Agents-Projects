@@ -1,0 +1,11 @@
+title: web-research-agent
+description: Searches the web for a topic and synthesizes a structured research report
+author: ashishpatel26
+language: python
+framework: langgraph
+tags: [research, web-search, rag, langgraph]
+industry: general
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

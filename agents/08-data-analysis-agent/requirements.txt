@@ -1,0 +1,6 @@
+langchain==0.3.0
+langchain-openai==0.2.0
+langchain-experimental==0.3.0
+pandas==2.2.0
+openpyxl==3.1.5
+python-dotenv==1.0.1

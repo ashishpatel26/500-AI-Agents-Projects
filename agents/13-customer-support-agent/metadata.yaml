@@ -1,0 +1,11 @@
+title: customer-support-agent
+description: RAG-powered customer support agent with escalation routing using LangGraph
+author: ashishpatel26
+language: python
+framework: langgraph
+tags: [customer-support, rag, langgraph, faiss, escalation]
+industry: customer-service
+difficulty: advanced
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

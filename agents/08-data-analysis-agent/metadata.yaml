@@ -1,0 +1,11 @@
+title: data-analysis-agent
+description: Chat with CSV/Excel data using natural language queries powered by pandas
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [data-analysis, pandas, csv, analytics, natural-language]
+industry: analytics
+difficulty: intermediate
+llm: gpt-4o
+entrypoint: agent.py
+requirements: requirements.txt

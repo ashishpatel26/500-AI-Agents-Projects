@@ -1,0 +1,11 @@
+title: stock-research-agent
+description: Real-time stock fundamentals with AI-powered investment analysis
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [finance, stocks, investment, yfinance, analysis]
+industry: finance
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

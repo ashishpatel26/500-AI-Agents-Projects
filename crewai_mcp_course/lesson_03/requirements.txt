@@ -1,0 +1,5 @@
+crewai==0.80.0
+langchain-openai==0.2.0
+fastmcp==0.4.0
+python-dotenv==1.0.1
+pydantic==2.9.0

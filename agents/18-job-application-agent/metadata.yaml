@@ -1,0 +1,11 @@
+title: job-application-agent
+description: Generates cover letter, interview prep, and salary range from job description + candidate profile
+author: ashishpatel26
+language: python
+framework: crewai
+tags: [hr, job-search, cover-letter, interview-prep, recruitment]
+industry: human-resources
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

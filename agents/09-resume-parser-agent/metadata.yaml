@@ -1,0 +1,11 @@
+title: resume-parser-agent
+description: Parses resumes to structured JSON and scores candidate fit against job descriptions
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [hr, recruitment, resume, nlp, parsing]
+industry: human-resources
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

@@ -1,0 +1,11 @@
+title: travel-planner-agent
+description: Multi-agent CrewAI system creating personalized travel itineraries with budget planning
+author: ashishpatel26
+language: python
+framework: crewai
+tags: [travel, planning, crewai, itinerary, budget]
+industry: travel
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

@@ -1,0 +1,11 @@
+title: competitive-analysis-agent
+description: Multi-step LangGraph agent for comprehensive competitive landscape analysis
+author: ashishpatel26
+language: python
+framework: langgraph
+tags: [business, competitive-analysis, strategy, langgraph, market-research]
+industry: business
+difficulty: advanced
+llm: gpt-4o
+entrypoint: agent.py
+requirements: requirements.txt

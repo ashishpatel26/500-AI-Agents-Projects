@@ -1,0 +1,11 @@
+title: recipe-recommendation-agent
+description: Suggests recipes from available ingredients with instructions and nutrition info
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [recipes, food, nutrition, recommendation]
+industry: food
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

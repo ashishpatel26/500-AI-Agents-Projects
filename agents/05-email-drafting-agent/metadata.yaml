@@ -1,0 +1,11 @@
+title: email-drafting-agent
+description: Two-agent CrewAI system that drafts professional emails from context
+author: ashishpatel26
+language: python
+framework: crewai
+tags: [email, communication, crewai, productivity]
+industry: communication
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

@@ -1,0 +1,11 @@
+title: pdf-qa-agent
+description: Loads a PDF and answers questions about its content with conversation history
+author: ashishpatel26
+language: python
+framework: llamaindex
+tags: [pdf, rag, qa, document-analysis, llamaindex]
+industry: research
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

@@ -1,0 +1,11 @@
+title: multi-agent-debate-system
+description: Two AI agents debate any topic with an AI judge scoring the outcome
+author: ashishpatel26
+language: python
+framework: langchain
+tags: [multi-agent, debate, reasoning, research, argumentation]
+industry: research
+difficulty: advanced
+llm: gpt-4o
+entrypoint: agent.py
+requirements: requirements.txt

@@ -1,0 +1,56 @@
+name: Link Checker
+
+on:
+  schedule:
+    - cron: '0 0 * * 1'  # every Monday at midnight UTC
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+  pull_request:
+    paths:
+      - 'README.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check links in README
+        uses: lycheeverse/lychee-action@v1
+        with:
+          args: |
+            --verbose
+            --no-progress
+            --exclude 'shields.io'
+            --exclude 'star-history.com'
+            --exclude 'img.shields.io'
+            --exclude 'api.star-history.com'
+            --exclude 'github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials'
+            --exclude 'github.com/agno-agi/agno/blob/main/cookbook/examples'
+            --timeout 30
+            --retry-wait-time 5
+            --max-retries 3
+            README.md
+          fail: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create issue for broken links
+        if: failure() && github.event_name != 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.create({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              title: '🔗 Broken links detected',
+              body: 'The weekly link checker found broken links. Check the [workflow run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details.',
+              labels: ['bug', 'documentation']
+            })

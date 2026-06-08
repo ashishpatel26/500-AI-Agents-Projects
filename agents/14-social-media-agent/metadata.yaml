@@ -1,0 +1,11 @@
+title: social-media-content-agent
+description: Generates platform-optimized content for Twitter, LinkedIn, and Instagram
+author: ashishpatel26
+language: python
+framework: crewai
+tags: [social-media, content, marketing, crewai, copywriting]
+industry: marketing
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

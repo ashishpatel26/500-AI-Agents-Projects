@@ -56,22 +56,28 @@ graph TD
 
 ### Using pip (traditional method)
 
-1. Install the required packages:
+1. Install the required packages for the lesson you want to run:
 ```bash
-pip install -r requirements.txt
+pip install -r lesson_01/requirements.txt
+pip install -r lesson_02/requirements.txt
+pip install -r lesson_03/requirements.txt
 ```
 
 2. Set up your environment variables:
 ```bash
-export FASTMCP_URL=http://your-fastmcp-server-url:port
-export FASTMCP_API_KEY=your-api-key
+export OPENAI_API_KEY=your-openai-api-key
+export MCP_SERVER_URL=http://localhost:8000
 ```
 
 3. Run the examples:
 ```bash
-python lesson1_setup.py
-python lesson2_mcp_integration.py
-python lesson3_advanced_patterns.py
+python lesson_01/agent.py
+python lesson_02/agent.py --topic "AI agents in healthcare"
+
+# Lesson 03 includes a matching FastMCP server and CrewAI wrappers.
+python lesson_03/agent.py
+# Optional: inspect/run the FastMCP server separately:
+python lesson_03/mcp_server.py
 ```
 
 ### Using uv (recommended modern method)
@@ -91,20 +97,25 @@ source .venv/Scripts/activate
 
 3. Install dependencies:
 ```bash
-uv pip install -r requirements.txt
+uv pip install -r lesson_01/requirements.txt
+uv pip install -r lesson_02/requirements.txt
+uv pip install -r lesson_03/requirements.txt
 ```
 
 4. Set up your environment variables:
 ```bash
-export FASTMCP_URL=http://your-fastmcp-server-url:port
-export FASTMCP_API_KEY=your-api-key
+export OPENAI_API_KEY=your-openai-api-key
+export MCP_SERVER_URL=http://localhost:8000
 ```
 
 5. Run the examples:
 ```bash
-python lesson1_setup.py
-python lesson2_mcp_integration.py
-python lesson3_advanced_patterns.py
+python lesson_01/agent.py
+python lesson_02/agent.py --topic "AI agents in healthcare"
+
+python lesson_03/agent.py
+# Optional: inspect/run the FastMCP server separately:
+python lesson_03/mcp_server.py
 ```
 
 ## Requirements
@@ -112,12 +123,13 @@ python lesson3_advanced_patterns.py
 - Python 3.8+
 - CrewAI library
 - FastMCP library
-- Access to an MCP server
+- OpenAI API key
+- FastMCP server example for Lesson 03
 
 ## Course Structure
 
 Each lesson includes:
-- A Python script with comprehensive comments
+- A lesson folder with `agent.py`, `requirements.txt`, and `.env.example`
 - Clear objectives and expected outcomes
 - Step-by-step implementation
 - Best practices for error handling and security
