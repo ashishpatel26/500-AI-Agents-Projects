@@ -114,6 +114,7 @@ Choosing a framework? Here's when to use each:
 | **Citadel** | Software Development | Orchestrates Claude Code agent fleets with lifecycle hooks, skills, campaign management, and postmortem-driven architecture | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/SethGammon/Citadel) |
 | **MediSuite-AI-Agent** | Health Insurance | Automates hospital / insurance claiming workflow | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ahmedmansour5/MediSuite-Ai-Agent) |
 | **Lina Egyptian Medical Chatbot** | Healthcare | Egyptian medical assistant chatbot | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/dina-khalid/Lina-Egyptian-Medical-Chatbot) |
+| **NextRole (AI Career Assistant)** | Human Resources | Tailors a resume to a job description and generates interview prep plus a day-of battlecard via a multi-agent system | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/tam159/next-role) |
 
 ---
 
