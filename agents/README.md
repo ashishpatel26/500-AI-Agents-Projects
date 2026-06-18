@@ -35,6 +35,7 @@ python agent.py
 | 18 | [Job Application Agent](18-job-application-agent/) | CrewAI | GPT-4o | HR | ⭐⭐ |
 | 19 | [Competitive Analysis Agent](19-competitive-analysis-agent/) | LangGraph | GPT-4o | Business | ⭐⭐⭐ |
 | 20 | [Multi-Agent Debate System](20-multi-agent-debate/) | LangChain | GPT-4o | Research | ⭐⭐⭐ |
+| 21 | [Advanced RAG Agent](21-advanced-rag-agent/) | LangGraph | GPT-4o / Claude | Research | ⭐⭐⭐ |
 
 ## Adding Your Agent
 
