@@ -41,7 +41,7 @@ graph TD
 
 - **Stateful Workflow**: Built using LangGraph's `StateGraph`, maintaining query, context, and grading state.
 - **Local Vector Store**: Uses FAISS loaded with sample documentation (about a mock software "CloudSync Pro") for local RAG execution.
-- **Grader Nodes**: Employs structural JSON outputs from LLMs to perform binary document grading, hallucination detection, and answer evaluation.
+- **Grader Nodes**: Employs structured JSON outputs from LLMs to perform binary document grading, hallucination detection, and answer evaluation.
 - **Web Search Fallback**: Automatically integrates search results (using Tavily Search or a fallback search simulator) when local documents lack enough relevant information.
 
 ## Quick Start
@@ -63,7 +63,7 @@ TAVILY_API_KEY=your_tavily_api_key_here # Optional
 Run the script:
 ```bash
 # Query that routes to RAG (local vector store info)
-python agent.py --query "What is the storage limit for CloudSync Pro Pro subscription?"
+python agent.py --query "What is the storage limit for CloudSync Pro subscription?"
 
 # Query that routes to Web Search (external info)
 python agent.py --query "What is the latest release date of Python 3.12?"

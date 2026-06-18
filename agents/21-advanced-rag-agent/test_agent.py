@@ -7,6 +7,7 @@ Run with:
 """
 
 import unittest
+from unittest.mock import patch, MagicMock
 from agent import (
     build_graph,
     route_question,
@@ -17,13 +18,21 @@ from agent import (
 )
 
 
+class MockGrade:
+    def __init__(self, score: str):
+        self.binary_score = score
+
+
 class TestAdvancedRAGAgent(unittest.TestCase):
 
     def setUp(self):
-        self.graph = build_graph()
+        # Force is_openai_configured to False when building the graph for base testing
+        with patch('agent.is_openai_configured', return_value=False):
+            self.graph = build_graph()
 
-    def test_routing_logic(self):
-        """Test that questions are routed to the correct nodes."""
+    @patch('agent.is_openai_configured', return_value=False)
+    def test_routing_logic_mock(self, mock_is_configured):
+        """Test that questions are routed correctly in mock mode."""
         # 1. RAG Query
         state_rag = {"question": "What is the pricing of CloudSync Pro?"}
         self.assertEqual(route_question(state_rag), "retrieve")
@@ -36,8 +45,9 @@ class TestAdvancedRAGAgent(unittest.TestCase):
         state_direct = {"question": "Explain how recursion works in Python."}
         self.assertEqual(route_question(state_direct), "direct_answer")
 
-    def test_grade_documents_heuristic(self):
-        """Test document grading heuristic for relevance."""
+    @patch('agent.is_openai_configured', return_value=False)
+    def test_grade_documents_heuristic(self, mock_is_configured):
+        """Test document grading heuristic for relevance in mock mode."""
         # Query with relevant terms
         state = {
             "question": "storage limit",
@@ -45,7 +55,8 @@ class TestAdvancedRAGAgent(unittest.TestCase):
             "steps": [],
         }
         res = grade_documents(state)
-        self.assertEqual(res["web_search"], "No")
+        self.assertFalse(res["should_web_search"])
+        self.assertEqual(len(res["documents"]), 1)
 
         # Query with irrelevant terms triggers search fallback
         state_irr = {
@@ -54,17 +65,18 @@ class TestAdvancedRAGAgent(unittest.TestCase):
             "steps": [],
         }
         res_irr = grade_documents(state_irr)
-        self.assertEqual(res_irr["web_search"], "Yes")
+        self.assertTrue(res_irr["should_web_search"])
 
     def test_decide_to_generate(self):
         """Test transition path selection based on web search flag."""
-        state_search = {"web_search": "Yes"}
+        state_search = {"should_web_search": True}
         self.assertEqual(decide_to_generate(state_search), "web_search")
 
-        state_generate = {"web_search": "No"}
+        state_generate = {"should_web_search": False}
         self.assertEqual(decide_to_generate(state_generate), "generate")
 
-    def test_grade_generation_grounding(self):
+    @patch('agent.is_openai_configured', return_value=False)
+    def test_grade_generation_grounding_mock(self, mock_is_configured):
         """Test hallucination/answer grading outputs in mock mode."""
         state = {
             "question": "recursion",
@@ -75,32 +87,88 @@ class TestAdvancedRAGAgent(unittest.TestCase):
         res = grade_generation_v_documents_and_question(state)
         self.assertEqual(res, "useful")
 
-    def test_graph_execution_mock_direct(self):
+    @patch('agent.is_openai_configured', return_value=True)
+    @patch('agent.ChatOpenAI')
+    def test_grade_generation_not_grounded(self, mock_chat_openai, mock_is_configured):
+        """Test the hallucination check branch when generation is not grounded."""
+        mock_llm = MagicMock()
+        mock_chat_openai.return_value = mock_llm
+
+        # Force first grader (hallucination) to return binary_score="no"
+        mock_grader = MagicMock()
+        mock_grader.invoke.return_value = MockGrade("no")
+        mock_llm.with_structured_output.return_value = mock_grader
+
+        state = {
+            "question": "What is recursion?",
+            "documents": ["Recursion is about sorting algorithms."],
+            "generation": "Recursion is a kind of sorting algorithm.",
+            "steps": []
+        }
+
+        res = grade_generation_v_documents_and_question(state)
+        self.assertEqual(res, "not grounded")
+
+    @patch('agent.is_openai_configured', return_value=True)
+    @patch('agent.ChatOpenAI')
+    def test_grade_generation_not_useful(self, mock_chat_openai, mock_is_configured):
+        """Test the answer relevance check branch when generation is grounded but not useful."""
+        mock_llm = MagicMock()
+        mock_chat_openai.return_value = mock_llm
+
+        # Force hallucination grader to "yes" and answer relevance grader to "no"
+        mock_grader_hallucination = MagicMock()
+        mock_grader_hallucination.invoke.return_value = MockGrade("yes")
+
+        mock_grader_answer = MagicMock()
+        mock_grader_answer.invoke.return_value = MockGrade("no")
+
+        mock_llm.with_structured_output.side_effect = [
+            mock_grader_hallucination,
+            mock_grader_answer
+        ]
+
+        state = {
+            "question": "What is recursion?",
+            "documents": ["Recursion is a function calling itself."],
+            "generation": "Python was released in 1991.",
+            "steps": []
+        }
+
+        res = grade_generation_v_documents_and_question(state)
+        self.assertEqual(res, "not useful")
+
+    @patch('agent.is_openai_configured', return_value=False)
+    def test_graph_execution_mock_direct(self, mock_is_configured):
         """Test execution flow of the compiled graph for a direct answer query in mock mode."""
         initial_state = {
             "question": "Explain recursion.",
             "generation": "",
-            "web_search": "No",
+            "should_web_search": False,
             "documents": [],
             "steps": [],
         }
         output = self.graph.invoke(initial_state)
-        self.assertIn("generate", output["steps"])
+        self.assertIn("direct_generate", output["steps"])
+        self.assertNotIn("retrieve", output["steps"])
+        self.assertNotIn("web_search", output["steps"])
+        self.assertNotIn("generate", output["steps"])
         self.assertTrue(len(output["generation"]) > 0)
 
-    def test_graph_execution_mock_rag(self):
+    @patch('agent.is_openai_configured', return_value=False)
+    def test_graph_execution_mock_rag(self, mock_is_configured):
         """Test execution flow for a RAG-based query in mock mode."""
         initial_state = {
             "question": "What is the storage limit of CloudSync Pro?",
             "generation": "",
-            "web_search": "No",
+            "should_web_search": False,
             "documents": [],
             "steps": [],
         }
         output = self.graph.invoke(initial_state)
         self.assertIn("retrieve", output["steps"])
         self.assertIn("grade_documents", output["steps"])
-        # Since it contains relevant keywords, it shouldn't route to web search in mock
+        self.assertNotIn("web_search", output["steps"])
         self.assertIn("generate", output["steps"])
         self.assertTrue(len(output["generation"]) > 0)
 

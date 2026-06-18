@@ -53,7 +53,7 @@ def is_openai_configured() -> bool:
 class GraphState(TypedDict):
     question: str
     generation: str
-    web_search: str  # "Yes" or "No"
+    should_web_search: bool
     documents: list[str]
     steps: list[str]
 
@@ -86,18 +86,36 @@ class GradeAnswer(BaseModel):
 # 3. Nodes Implementation
 # =====================================================================
 
+_RETRIEVER = None
+
+
+def get_retriever():
+    """Return a cached retriever, initializing it on first use."""
+    global _RETRIEVER
+
+    if _RETRIEVER is not None:
+        return _RETRIEVER
+
+    if not is_openai_configured():
+        return None
+
+    embeddings = OpenAIEmbeddings()
+    splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=30)
+    docs_split = splitter.create_documents(SAMPLE_KB)
+    vectorstore = FAISS.from_documents(docs_split, embeddings)
+    _RETRIEVER = vectorstore.as_retriever(search_kwargs={"k": 2})
+    return _RETRIEVER
+
+
 def retrieve(state: GraphState) -> GraphState:
     print("---RETRIEVING FROM VECTOR STORE---")
     question = state["question"]
     steps = state.get("steps", [])
     steps.append("retrieve")
 
-    if is_openai_configured():
-        embeddings = OpenAIEmbeddings()
-        splitter = RecursiveCharacterTextSplitter(chunk_size=250, chunk_overlap=30)
-        docs_split = splitter.create_documents(SAMPLE_KB)
-        vectorstore = FAISS.from_documents(docs_split, embeddings)
-        retriever = vectorstore.as_retriever(search_kwargs={"k": 2})
+    retriever = get_retriever()
+
+    if retriever is not None:
         retrieved_docs = retriever.invoke(question)
         documents = [d.page_content for d in retrieved_docs]
     else:
@@ -134,14 +152,36 @@ def generate(state: GraphState) -> GraphState:
     else:
         # Fallback Mock generation logic
         print("[MOCK] Simulating response generation...")
-        if "recursion" in question.lower():
-            generation = "Recursion in programming is a technique where a function calls itself directly or indirectly to solve a problem by breaking it down into smaller sub-problems."
-        elif "storage" in question.lower() or "limit" in question.lower() or "pricing" in question.lower():
+        if "storage" in question.lower() or "limit" in question.lower() or "pricing" in question.lower():
             generation = "According to CloudSync Pro specifications: The Pro subscription costs $19/mo and features 1TB storage, offline mode, and real-time sync across 5 devices. The individual file size limit is 10GB for Pro/Business, and 2GB for Basic."
         elif "python" in question.lower() or "release" in question.lower():
             generation = "Based on web search results: Python 3.12 was released on October 2, 2023. It features new syntax options, improved performance, and cleaner syntax."
         else:
             generation = f"This is a mock response answering: '{question}' using context:\n{context[:150]}..."
+
+    return {"generation": generation, "steps": steps}
+
+
+def direct_generate(state: GraphState) -> GraphState:
+    print("---GENERATING DIRECT RESPONSE (NO RAG)---")
+    question = state["question"]
+    steps = state.get("steps", [])
+    steps.append("direct_generate")
+
+    if is_openai_configured():
+        llm = ChatOpenAI(model="gpt-4o-mini", temperature=0.3)
+        messages = [
+            SystemMessage(content="You are a helpful assistant. Answer the user question directly as best as you can."),
+            HumanMessage(content=question),
+        ]
+        response = llm.invoke(messages)
+        generation = response.content
+    else:
+        print("[MOCK] Simulating direct response generation...")
+        if "recursion" in question.lower():
+            generation = "Recursion in programming is a technique where a function calls itself directly or indirectly to solve a problem by breaking it down into smaller sub-problems."
+        else:
+            generation = f"This is a mock direct response to: '{question}'."
 
     return {"generation": generation, "steps": steps}
 
@@ -153,8 +193,9 @@ def grade_documents(state: GraphState) -> GraphState:
     steps = state.get("steps", [])
     steps.append("grade_documents")
 
-    web_search = "No"
+    should_web_search = False
     filtered_docs = []
+    relevance_threshold = 0.5
 
     if is_openai_configured():
         llm = ChatOpenAI(model="gpt-4o-mini", temperature=0)
@@ -165,8 +206,12 @@ def grade_documents(state: GraphState) -> GraphState:
             grade = structured_grader.invoke([HumanMessage(content=grade_prompt)])
             if grade.binary_score == "yes":
                 filtered_docs.append(doc)
-            else:
-                web_search = "Yes"  # Trigger web search if any doc is irrelevant
+        
+        total_docs = len(documents)
+        if total_docs > 0:
+            relevant_fraction = len(filtered_docs) / total_docs
+            if len(filtered_docs) == 0 or relevant_fraction < relevance_threshold:
+                should_web_search = True
     else:
         # Fallback Mock grading logic
         print("[MOCK] Simulating document relevance grading...")
@@ -175,16 +220,17 @@ def grade_documents(state: GraphState) -> GraphState:
             # Simple keyword matching heuristic
             if any(word in doc.lower() for word in query_words if len(word) > 3):
                 filtered_docs.append(doc)
-            else:
-                web_search = "Yes"
 
-        # If no docs match, we definitely search the web
-        if not filtered_docs:
-            web_search = "Yes"
-            filtered_docs = documents
+        total_docs = len(documents)
+        if total_docs > 0:
+            relevant_fraction = len(filtered_docs) / total_docs
+            if len(filtered_docs) == 0 or relevant_fraction < relevance_threshold:
+                should_web_search = True
+        else:
+            should_web_search = True
 
-    print(f"Relevance grade: web_search flag = {web_search}")
-    return {"documents": filtered_docs, "web_search": web_search, "steps": steps}
+    print(f"Relevance grade: should_web_search = {should_web_search}")
+    return {"documents": filtered_docs, "should_web_search": should_web_search, "steps": steps}
 
 
 def web_search(state: GraphState) -> GraphState:
@@ -260,11 +306,11 @@ def route_question(state: GraphState) -> Literal["web_search", "retrieve", "dire
 
 def decide_to_generate(state: GraphState) -> Literal["web_search", "generate"]:
     print("---DECIDING TO GENERATE OR SEARCH---")
-    if state["web_search"] == "Yes":
-        print("Decision: Some docs irrelevant. Routing to Web Search.")
+    if state.get("should_web_search", False):
+        print("Decision: Relevant document ratio too low. Routing to Web Search.")
         return "web_search"
     else:
-        print("Decision: All docs relevant. Routing to Response Generator.")
+        print("Decision: Documents are sufficiently relevant. Routing to Response Generator.")
         return "generate"
 
 
@@ -324,6 +370,7 @@ def build_graph() -> StateGraph:
     workflow.add_node("retrieve", retrieve)
     workflow.add_node("grade_documents", grade_documents)
     workflow.add_node("generate", generate)
+    workflow.add_node("direct_generate", direct_generate)
     workflow.add_node("web_search", web_search)
 
     # Dynamic starting routing
@@ -332,7 +379,7 @@ def build_graph() -> StateGraph:
         {
             "retrieve": "retrieve",
             "web_search": "web_search",
-            "direct_answer": "generate",
+            "direct_answer": "direct_generate",
         }
     )
 
@@ -349,6 +396,7 @@ def build_graph() -> StateGraph:
     )
     
     workflow.add_edge("web_search", "generate")
+    workflow.add_edge("direct_generate", END)
     
     workflow.add_conditional_edges(
         "generate",
@@ -389,7 +437,7 @@ def main():
     initial_state = {
         "question": args.query,
         "generation": "",
-        "web_search": "No",
+        "should_web_search": False,
         "documents": [],
         "steps": []
     }
