@@ -1,5 +1,14 @@
 # 500+ AI Agent Projects & Use Cases
 
+<p align="center">
+  <a href="https://www.atlascloud.ai/?utm_source=github&utm_medium=link&utm_campaign=500-ai-agents-projects">
+    <img src="assets/atlas-cloud-logo.png" alt="Atlas Cloud" width="140" />
+  </a>
+  <br />
+  <sub><strong>Atlas Cloud</strong> Atlas Cloud provides OpenAI-compatible LLM APIs and async image/video generation APIs for AI agent projects and multimodal application demos.</sub>
+</p>
+
+
 <div align="center">
 
 [![GitHub Stars](https://img.shields.io/github/stars/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge&color=yellow)](https://github.com/ashishpatel26/500-AI-Agents-Projects/stargazers)
