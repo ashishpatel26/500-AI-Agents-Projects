@@ -26,7 +26,7 @@ def extract_structure(code: str) -> str:
         tree = ast.parse(code)
         structure = []
 
-        for node in ast.walk(tree):
+        for node in tree.body:
             if isinstance(node, ast.FunctionDef):
                 args = [a.arg for a in node.args.args]
                 structure.append(f"def {node.name}({', '.join(args)})")
