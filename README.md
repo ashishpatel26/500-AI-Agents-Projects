@@ -1,5 +1,8 @@
 # 500+ AI Agent Projects & Use Cases
 
+- [SuperCompress](https://github.com/arjunkshah/supercompress) - Open-source learned prompt compression for LLMs. Cuts ~65% of tokens. CPU, 100% recall. [supercompress.dev](https://supercompress.dev)
+
+
 <div align="center">
 
 [![GitHub Stars](https://img.shields.io/github/stars/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge&color=yellow)](https://github.com/ashishpatel26/500-AI-Agents-Projects/stargazers)
@@ -112,6 +115,7 @@ Choosing a framework? Here's when to use each:
 | **Logistics Optimization Agent** | Supply Chain | Plans efficient delivery routes and manages inventory | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/microsoft/OptiGuide) |
 | **Vibe Hacking Agent** | Cybersecurity | Autonomous Multi-Agent Based Red Team Testing Service | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PurpleAILAB/Decepticon) |
 | **Citadel** | Software Development | Orchestrates Claude Code agent fleets with lifecycle hooks, skills, campaign management, and postmortem-driven architecture | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/SethGammon/Citadel) |
+| **Loopy** | Software Development | Kanban-based agent OS orchestrating dozens of coding-agent CLIs with complexity-aware routing, named subagents, and verifiable execution receipts. Local-first. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/arjunkshah/loopy) |
 | **MediSuite-AI-Agent** | Health Insurance | Automates hospital / insurance claiming workflow | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ahmedmansour5/MediSuite-Ai-Agent) |
 | **Lina Egyptian Medical Chatbot** | Healthcare | Egyptian medical assistant chatbot | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/dina-khalid/Lina-Egyptian-Medical-Chatbot) |
 
