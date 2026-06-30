@@ -1,5 +1,8 @@
 # 500+ AI Agent Projects & Use Cases
 
+- [SuperCompress](https://github.com/arjunkshah/supercompress) - Open-source learned prompt compression for LLMs. Cuts ~65% of tokens. CPU, 100% recall. [supercompress.dev](https://supercompress.dev)
+
+
 <div align="center">
 
 [![GitHub Stars](https://img.shields.io/github/stars/ashishpatel26/500-AI-Agents-Projects?style=for-the-badge&color=yellow)](https://github.com/ashishpatel26/500-AI-Agents-Projects/stargazers)
