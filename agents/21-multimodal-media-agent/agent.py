@@ -181,7 +181,13 @@ def build_request_body(
 
 
 def submit_generation(choice: ModelChoice, request_body: dict[str, Any], api_key: str) -> str:
-    endpoint = "generateImage" if choice.model_type == "Image" else "generateVideo"
+    if choice.model_type == "Image":
+        endpoint = "generateImage"
+    elif choice.model_type == "Video":
+        endpoint = "generateVideo"
+    else:
+        raise AgentError(f"Unsupported media model type: {choice.model_type}")
+
     result = post_json(f"{MEDIA_BASE_URL}/model/{endpoint}", request_body, api_key)
     prediction_id = result.get("data", {}).get("id")
     if not prediction_id:
@@ -189,19 +195,28 @@ def submit_generation(choice: ModelChoice, request_body: dict[str, Any], api_key
     return str(prediction_id)
 
 
-def poll_prediction(prediction_id: str, api_key: str, interval_seconds: int = 5) -> dict[str, Any]:
+def poll_prediction(
+    prediction_id: str,
+    api_key: str,
+    interval_seconds: int = 5,
+    max_attempts: int = 60,
+) -> dict[str, Any]:
     headers = {"Authorization": f"Bearer {api_key}"}
-    while True:
+    for attempt in range(1, max_attempts + 1):
         result = get_json(
             f"{MEDIA_BASE_URL}/model/prediction/{prediction_id}",
             headers=headers,
             timeout=30,
         )
         status = str(result.get("data", {}).get("status", ""))
-        print(f"prediction={prediction_id} status={status}")
+        print(f"prediction={prediction_id} status={status} attempt={attempt}/{max_attempts}")
         if status in TERMINAL_STATUSES:
             return result
         time.sleep(interval_seconds)
+
+    raise AgentError(
+        f"Prediction {prediction_id} did not reach a terminal status after {max_attempts} attempts"
+    )
 
 
 def main() -> int:
@@ -216,44 +231,55 @@ def main() -> int:
     parser.add_argument("--extra-json", help="Optional JSON object with schema-validated fields")
     parser.add_argument("--submit", action="store_true", help="Submit the generation job after preview")
     parser.add_argument("--poll", action="store_true", help="Poll the submitted job until it finishes")
+    parser.add_argument("--poll-interval", type=int, default=5, help="Seconds between polling attempts")
+    parser.add_argument("--max-poll-attempts", type=int, default=60, help="Maximum polling attempts")
     args = parser.parse_args()
 
-    choice = choose_model(args.type, args.keyword)
-    properties, required = load_input_schema(choice)
-    prompt = build_media_prompt(args.brief, args.audience, args.style)
-    request_body = build_request_body(
-        choice=choice,
-        properties=properties,
-        required=required,
-        prompt=prompt,
-        extra=parse_extra_json(args.extra_json),
-    )
+    try:
+        choice = choose_model(args.type, args.keyword)
+        properties, required = load_input_schema(choice)
+        prompt = build_media_prompt(args.brief, args.audience, args.style)
+        request_body = build_request_body(
+            choice=choice,
+            properties=properties,
+            required=required,
+            prompt=prompt,
+            extra=parse_extra_json(args.extra_json),
+        )
 
-    preview = {
-        "selected_model": choice.__dict__,
-        "schema_fields": sorted(properties),
-        "required_fields": required,
-        "request_body": request_body,
-        "submit": args.submit,
-    }
-    print(json.dumps(preview, indent=2, ensure_ascii=False))
+        preview = {
+            "selected_model": choice.__dict__,
+            "schema_fields": sorted(properties),
+            "required_fields": required,
+            "request_body": request_body,
+            "submit": args.submit,
+        }
+        print(json.dumps(preview, indent=2, ensure_ascii=False))
 
-    if not args.submit:
-        print("Dry run only. Re-run with --submit after reviewing the request and cost.")
+        if not args.submit:
+            print("Dry run only. Re-run with --submit after reviewing the request and cost.")
+            return 0
+
+        api_key = os.getenv("ATLASCLOUD_API_KEY")
+        if not api_key:
+            raise AgentError("Set ATLASCLOUD_API_KEY before using --submit.")
+
+        prediction_id = submit_generation(choice, request_body, api_key)
+        print(f"Submitted prediction: {prediction_id}")
+
+        if args.poll:
+            result = poll_prediction(
+                prediction_id,
+                api_key,
+                interval_seconds=args.poll_interval,
+                max_attempts=args.max_poll_attempts,
+            )
+            print(json.dumps(result, indent=2, ensure_ascii=False))
+
         return 0
-
-    api_key = os.getenv("ATLASCLOUD_API_KEY")
-    if not api_key:
-        raise AgentError("Set ATLASCLOUD_API_KEY before using --submit.")
-
-    prediction_id = submit_generation(choice, request_body, api_key)
-    print(f"Submitted prediction: {prediction_id}")
-
-    if args.poll:
-        result = poll_prediction(prediction_id, api_key)
-        print(json.dumps(result, indent=2, ensure_ascii=False))
-
-    return 0
+    except AgentError as exc:
+        print(f"ERROR: {exc}")
+        return 1
 
 
 if __name__ == "__main__":
