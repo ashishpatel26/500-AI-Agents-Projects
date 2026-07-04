@@ -81,7 +81,7 @@ Choosing a framework? Here's when to use each:
 - Need stateful graphs + RAG → **LangGraph**
 - Building code-writing / research agents → **AutoGen**
 - Enterprise document pipelines → **LlamaIndex**
-- **[Context Kit](https://github.com/JDDavenport/context-kit)** — Personal Context Artifacts: 4 Markdown templates + 5 Claude Code skills for giving AI agents deep personal context. MIT, one-command install.
+- **[Context Kit](https://github.com/JDDavenport/context-kit)** — Personal Context Artifacts: 4 Markdown templates + 5 Claude Code skills for giving AI agents deep personal context. MIT-licensed, one-command install.
 
 ---
 
