@@ -50,18 +50,22 @@ needed).
 
 ```
 Loading sample clinical protocol snippets...
-Loaded 5 protocol snippets: ['burn_injury.txt', 'diarrhea_dehydration.txt', ...]
+Loaded 5 protocol snippets: [...list of files found in sample_data/...]
 
 Building local vector index (TF-IDF embeddings + ChromaDB)...
 ======================================================================
 Patient symptoms: 3 year old child, fast breathing, chest indrawing, fever since 2 days
-Retrieved protocols: ['pneumonia_signs.txt', 'fever_child.txt']
+Retrieved protocols: [the 2 most relevant .txt files in sample_data/]
 
 Triage recommendation:
 [Rule-based fallback — no LLM backend configured]
 Urgency level: RED (refer immediately)
 ...
 ```
+
+Note: `run_demo.py` loads every `.txt` file found in `sample_data/` dynamically
+(via `glob`), so the exact filenames and their count aren't hardcoded anywhere
+in the code — only illustrative in this README.
 
 ## Running the smoke test
 
