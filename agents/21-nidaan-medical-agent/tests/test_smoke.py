@@ -6,11 +6,17 @@ generate recommendation) runs end-to-end without error, using only the
 rule-based fallback (no API keys or local LLM required). This is what
 CI / reviewers should run to verify the contribution works.
 
+The Ollama call path is explicitly patched to fail, so this test
+deterministically exercises the rule-based fallback regardless of
+whether the machine running it happens to have Ollama installed and
+running locally.
+
 Run with: python tests/test_smoke.py
 """
 
 import os
 import sys
+from unittest.mock import patch
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -18,6 +24,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # always exercises the deterministic rule-based fallback path.
 os.environ.pop("GROQ_API_KEY", None)
 
+import run_demo
 from run_demo import load_sample_docs, build_index, retrieve, generate_recommendation
 
 
@@ -32,9 +39,18 @@ def test_pipeline_runs_end_to_end():
     assert len(hits) == 2, "Expected 2 retrieved documents"
 
     context = "\n---\n".join(doc for doc, _, _ in hits)
-    recommendation = generate_recommendation(context, query)
+
+    # Force the Ollama path to fail so this test always exercises the
+    # deterministic rule-based fallback, independent of the local machine.
+    with patch.object(
+        run_demo, "call_ollama", side_effect=RuntimeError("Ollama disabled in smoke test")
+    ):
+        recommendation = generate_recommendation(context, query)
 
     assert isinstance(recommendation, str) and len(recommendation) > 0
+    assert "Rule-based fallback" in recommendation, (
+        "Expected the rule-based fallback path to run, but got: " + recommendation
+    )
     print("Smoke test passed. Sample recommendation:\n", recommendation)
 
 
