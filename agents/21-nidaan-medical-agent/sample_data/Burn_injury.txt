@@ -1,0 +1,4 @@
+Burn injury assessment
+- Estimate the size and depth of the burn, checking for blistering, charring, or exposed tissue.
+- Deep or extensive burns, or any burn involving the face or airway, require immediate referral.
+- Small superficial burns can be cleaned, covered with a sterile dressing, and monitored locally.
