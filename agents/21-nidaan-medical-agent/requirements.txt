@@ -1,4 +1,5 @@
-chromadb==1.5.9
+chromadb==0.5.23
+posthog==3.7.0
 scikit-learn==1.8.0
 numpy==2.4.4
 groq==1.5.0
