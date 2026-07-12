@@ -38,6 +38,10 @@ import re
 import sys
 import glob
 
+# Disable ChromaDB's anonymized telemetry: keeps the demo fully offline
+# (no outbound calls) and avoids noisy version-mismatch warnings in output.
+os.environ.setdefault("ANONYMIZED_TELEMETRY", "False")
+
 try:
     import chromadb
     from chromadb.api.types import EmbeddingFunction
@@ -77,7 +81,10 @@ def load_sample_docs():
 
 def build_index(docs, ids, metadatas):
     embed_fn = TfidfEmbeddingFunction(docs)
-    client = chromadb.Client()  # in-memory, no persistence needed for the demo
+    # in-memory, no persistence needed for the demo; telemetry disabled to
+    # keep the demo fully offline and avoid noisy version-mismatch warnings.
+    settings = chromadb.Settings(anonymized_telemetry=False)
+    client = chromadb.Client(settings)
     collection = client.get_or_create_collection(
         name="nidaan_demo", embedding_function=embed_fn
     )

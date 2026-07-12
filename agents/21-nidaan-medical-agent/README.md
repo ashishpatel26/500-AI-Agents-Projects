@@ -82,6 +82,20 @@ python tests/test_smoke.py
 This runs the full pipeline end-to-end using the rule-based fallback only,
 so it passes with no API keys or internet access.
 
+## A note on the pinned `chromadb` version
+
+`requirements.txt` pins `chromadb==0.5.23`, a version from before `1.0.0`.
+This is deliberate: ChromaDB versions `1.0.0` through at least `1.5.9` have a
+critical, still-unpatched pre-authentication RCE (CVE-2026-45829,
+"ChromaToast") in the Python FastAPI **server**, triggered via a malicious
+Hugging Face model reference with `trust_remote_code`. This demo never runs
+that server or that embedding function — it only uses the local in-memory
+`chromadb.Client()` with a custom TF-IDF embedding function — so it isn't
+exploitable via this CVE as written. Even so, pinning a version that
+predates the vulnerability entirely is the safer choice for a public
+contribution. If you upgrade this dependency later, check whether a patched
+release exists first.
+
 ## Ethical considerations / safety notes
 
 This is a **demo for educational and portfolio purposes**, not a
