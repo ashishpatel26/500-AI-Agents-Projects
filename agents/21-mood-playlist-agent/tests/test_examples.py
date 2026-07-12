@@ -43,3 +43,27 @@ def test_generate_playlist_with_crew():
     playlist = generate_playlist_with_crew("Sunday morning coffee and jazz", spotify_enrich=False)
     assert playlist.name
     assert len(playlist.tracks) == 10
+
+
+def test_generate_playlist_with_graph():
+    from mood_playlist_agent.graph_agent import generate_playlist_with_graph
+    playlist = generate_playlist_with_graph("birthday celebration, high energy party", spotify_enrich=False)
+    assert playlist.name
+    assert len(playlist.tracks) == 10
+    assert playlist.energy_level in {"low", "medium", "high"}
+
+
+def test_generate_playlist_with_graph_streams():
+    from mood_playlist_agent.graph_agent import stream_playlist_with_graph
+    nodes_seen = []
+    state = {}
+    for node_name, current in stream_playlist_with_graph(
+        "rainy evening, jazz and coffee", spotify_enrich=False
+    ):
+        nodes_seen.append(node_name)
+        state = current
+    assert "analyse_mood" in nodes_seen
+    assert "curate_playlist" in nodes_seen
+    assert "finalise" in nodes_seen
+    assert state.get("playlist") is not None
+    assert len(state["playlist"].tracks) == 10
