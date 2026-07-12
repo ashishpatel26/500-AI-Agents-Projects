@@ -57,15 +57,21 @@ Building local vector index (TF-IDF embeddings + ChromaDB)...
 Patient symptoms: 3 year old child, fast breathing, chest indrawing, fever since 2 days
 Retrieved protocols: [the 2 most relevant .txt files in sample_data/]
 
-Triage recommendation:
-[Rule-based fallback — no LLM backend configured]
-Urgency level: RED (refer immediately)
-...
+Urgency level (deterministic safety floor): RED (refer immediately)
+Guidance source: rule-based fallback
+Matched protocol notes: ...
+Recommendation: Follow the matched protocol notes above. Refer to the
+nearest PHC if this falls in the RED category.
 ```
 
 Note: `run_demo.py` loads every `.txt` file found in `sample_data/` dynamically
 (via `glob`), so the exact filenames and their count aren't hardcoded anywhere
 in the code — only illustrative in this README.
+
+The **urgency level is always computed deterministically first** (negation-aware
+keyword matching over the symptom text), before any LLM backend runs. Whichever
+backend generates the free-text "Recommendation" line, it cannot override or
+lower that safety-floor urgency level.
 
 ## Running the smoke test
 
@@ -100,7 +106,11 @@ production-ready medical device:
   embeddings via LangChain).
 - **Generation:** tiered LLM fallback (Groq → Ollama → rule-based), mirroring
   the production system's multi-provider routing design.
-- **Urgency classification:** simple keyword-based heuristic in this demo;
-  production system uses LLM-driven classification grounded in retrieved
-  IMCI/WHO/NTEP protocol content, with adversarial test cases validated
-  against clinical review.
+- **Urgency classification:** a deterministic, negation-aware keyword classifier
+  computes a *safety floor* directly from the symptom text, independently of
+  any LLM backend. This floor is always reported as-is and cannot be lowered
+  by an LLM's free-text output — the LLM only supplies supplementary guidance
+  text. This demo's classifier is intentionally simple (illustrative keyword
+  matching with negation detection); production system uses LLM-driven
+  classification grounded in retrieved IMCI/WHO/NTEP protocol content, with
+  adversarial test cases validated against clinical review.
