@@ -90,6 +90,10 @@ Choosing a framework? Here's when to use each:
 
 | Use Case | Industry | Description | Code |
 |---|---|---|---|
+
+
+| **NiDaan** | Healthcare | RAG-based clinical triage assistant for rural ASHA health workers, using LangChain, ChromaDB, and LangGraph HITL patterns | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PriyanshuPaul79/AshaPulse) |
+
 | **HIA (Health Insights Agent)** | Healthcare | Analyses medical reports and provides health insights | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/harshhh28/hia.git) |
 | **AI Health Assistant** | Healthcare | Diagnoses and monitors diseases using patient data | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ahmadvh/AI-Agents-for-Medical-Diagnostics.git) |
 | **Automated Trading Bot** | Finance | Automates stock trading with real-time market analysis | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MingyuJ666/Stockagent.git) |

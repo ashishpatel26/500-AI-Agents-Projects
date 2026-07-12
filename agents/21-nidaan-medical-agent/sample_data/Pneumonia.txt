@@ -1,0 +1,7 @@
+Fast breathing and chest indrawing (respiratory distress)
+- Count breaths per minute and compare against age-based fast-breathing thresholds.
+- Look for chest indrawing (lower chest pulling in during breathing) and grunting.
+- Fast breathing together with chest indrawing indicates severe respiratory illness
+  and requires immediate referral.
+- Fast breathing alone, without indrawing, may be treated with oral antibiotics per
+  local protocol, with close follow-up within 2 days.
