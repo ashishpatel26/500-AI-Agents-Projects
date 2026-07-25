@@ -296,20 +296,9 @@ See [CONTRIBUTION.md](CONTRIBUTION.md) for full requirements (metadata.yaml, req
 
 ## Star History
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
-  />
-</picture>
+[![Star History Chart](images/star-history.svg)](https://star-history.com/#ashishpatel26/500-AI-Agents-Projects&Date)
+
+<sub>Regenerated weekly from the GitHub API by [`.github/workflows/star-history.yml`](.github/workflows/star-history.yml). Click the chart for the interactive version.</sub>
 
 ---
 
