@@ -1,0 +1,11 @@
+title: sentinel-transaction-oracle
+description: Pre-execution transaction safety oracle for autonomous AI agents — signed SAFE/UNSAFE/UNKNOWN verdict via the SENTINEL API, fail-closed
+author: teodorofodocrispin-cmyk
+language: python
+framework: other
+tags: [security, safety, web3, agent-safety, x402, oracle]
+industry: general
+difficulty: beginner
+llm: none
+entrypoint: agent.py
+requirements: requirements.txt
