@@ -1,0 +1,11 @@
+title: x402-payment-agent
+description: An agent that uses x402 micropayments to access pay-per-call API services for market data, DeFi intelligence, and token analytics
+author: ProtoJay4789
+language: python
+framework: langchain
+tags: [x402, payments, defi, finance, market-data, micropayments, web3]
+industry: finance
+difficulty: advanced
+llm: gpt-4o
+entrypoint: agent.py
+requirements: requirements.txt

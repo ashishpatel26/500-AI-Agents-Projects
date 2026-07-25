@@ -1,0 +1,2 @@
+requests>=2.31.0
+# In production: pip install git+https://github.com/ProtoJay4789/genTech-agent-kit.git
