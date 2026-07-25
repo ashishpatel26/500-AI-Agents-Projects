@@ -35,7 +35,7 @@ python agent.py
 | 18 | [Job Application Agent](18-job-application-agent/) | CrewAI | GPT-4o | HR | ⭐⭐ |
 | 19 | [Competitive Analysis Agent](19-competitive-analysis-agent/) | LangGraph | GPT-4o | Business | ⭐⭐⭐ |
 | 20 | [Multi-Agent Debate System](20-multi-agent-debate/) | LangChain | GPT-4o | Research | ⭐⭐⭐ |
-| 21 | [Multimodal Media Generation Agent](21-multimodal-media-agent/) | Other | Atlas Cloud Media API | Marketing | ⭐⭐ |
+| 25 | [Multimodal Media Generation Agent](25-multimodal-media-agent/) | Other | Atlas Cloud Media API | Marketing | ⭐⭐ |
 
 ## Adding Your Agent
 
