@@ -1,0 +1,44 @@
+name: Star History
+
+on:
+  schedule:
+    - cron: '30 2 * * 1'  # Mondays, 02:30 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: star-history
+  cancel-in-progress: true
+
+jobs:
+  regenerate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify the generator still works
+        run: node scripts/star-history.mjs --self-check
+
+      - name: Regenerate chart
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: node scripts/star-history.mjs "$GITHUB_REPOSITORY" images/star-history.svg
+
+      - name: Commit if the chart changed
+        run: |
+          if git diff --quiet -- images/star-history.svg; then
+            echo "No change in star history, nothing to commit."
+            exit 0
+          fi
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add images/star-history.svg
+          # Signed off so the DCO check stays satisfied on any PR that includes this.
+          git commit -s -m "chore: refresh star history chart [skip ci]"
+          git push
