@@ -32,6 +32,7 @@ jobs:
             --exclude 'star-history.com'
             --exclude 'img.shields.io'
             --exclude 'api.star-history.com'
+            --exclude 'github\.com/ashishpatel26/500-AI-Agents-Projects'
             --exclude 'github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials'
             --exclude 'github.com/agno-agi/agno/blob/main/cookbook/examples'
             --timeout 30
