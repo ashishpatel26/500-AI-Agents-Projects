@@ -23,11 +23,8 @@ const SAMPLES = 40;
 const W = 800, H = 400;
 const PAD_L = 70, PAD_R = 30, PAD_T = 30, PAD_B = 50;
 
-async function get(url, token) {
-  const headers = {
-    Accept: 'application/vnd.github.star+json',
-    'User-Agent': 'star-history-generator',
-  };
+async function get(url, token, accept = 'application/vnd.github+json') {
+  const headers = { Accept: accept, 'User-Agent': 'star-history-generator' };
   if (token) headers.Authorization = `Bearer ${token}`;
   const res = await fetch(url, { headers });
   if (!res.ok) {
@@ -37,6 +34,11 @@ async function get(url, token) {
   }
   return res.json();
 }
+
+// Only the stargazers endpoint documents/needs this media type - it's what
+// makes starred_at appear in the response. Sending it on other endpoints
+// (like /repos/{repo}) is undocumented behaviour we shouldn't rely on.
+const STAR_JSON = 'application/vnd.github.star+json';
 
 export async function fetchPoints(repo, token, samples = SAMPLES) {
   const meta = await get(`${API}/repos/${repo}`, token);
@@ -58,7 +60,7 @@ export async function fetchPoints(repo, token, samples = SAMPLES) {
   for (const n of indices) {
     let page;
     try {
-      page = await get(`${API}/repos/${repo}/stargazers?per_page=1&page=${n}`, token);
+      page = await get(`${API}/repos/${repo}/stargazers?per_page=1&page=${n}`, token, STAR_JSON);
     } catch (e) {
       // GitHub caps deep pagination on some endpoints. A gap mid-curve is
       // survivable, so skip rather than abort the whole run.
