@@ -26,8 +26,8 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 # always exercises the deterministic rule-based fallback path.
 os.environ.pop("GROQ_API_KEY", None)
 
-import run_demo
-from run_demo import (
+import agent
+from agent import (
     load_sample_docs,
     build_index,
     retrieve,
@@ -51,7 +51,7 @@ def test_pipeline_runs_end_to_end():
     # Force the Ollama path to fail so this test always exercises the
     # deterministic rule-based fallback, independent of the local machine.
     with patch.object(
-        run_demo, "call_ollama", side_effect=RuntimeError("Ollama disabled in smoke test")
+        agent, "call_ollama", side_effect=RuntimeError("Ollama disabled in smoke test")
     ):
         recommendation = generate_recommendation(context, query)
 

@@ -31,7 +31,7 @@ demo.
 
 ```bash
 pip install -r requirements.txt
-python run_demo.py
+python agent.py
 ```
 
 No API key or internet access is required to see a full end-to-end run —
@@ -40,7 +40,7 @@ recommendations instead, set `GROQ_API_KEY` first:
 
 ```bash
 export GROQ_API_KEY=your_key_here
-python run_demo.py
+python agent.py
 ```
 
 **Runtime:** under 30 seconds on a modest CPU-only machine (laptop, no GPU
@@ -64,7 +64,7 @@ Recommendation: Follow the matched protocol notes above. Refer to the
 nearest PHC if this falls in the RED category.
 ```
 
-Note: `run_demo.py` loads every `.txt` file found in `sample_data/` dynamically
+Note: `agent.py` loads every `.txt` file found in `sample_data/` dynamically
 (via `glob`), so the exact filenames and their count aren't hardcoded anywhere
 in the code — only illustrative in this README.
 

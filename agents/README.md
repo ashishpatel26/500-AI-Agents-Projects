@@ -35,6 +35,7 @@ python agent.py
 | 18 | [Job Application Agent](18-job-application-agent/) | CrewAI | GPT-4o | HR | ⭐⭐ |
 | 19 | [Competitive Analysis Agent](19-competitive-analysis-agent/) | LangGraph | GPT-4o | Business | ⭐⭐⭐ |
 | 20 | [Multi-Agent Debate System](20-multi-agent-debate/) | LangChain | GPT-4o | Research | ⭐⭐⭐ |
+| 26 | [NiDaan Medical Agent](26-nidaan-medical-agent/) | LangGraph | GPT-4o / Groq / Ollama | Healthcare | ⭐⭐⭐ |
 
 ## Adding Your Agent
 

@@ -1,0 +1,12 @@
+title: nidaan-medical-agent
+description: Paediatric clinical triage assistant grounded in IMCI/WHO/NTEP protocols for educational use, not a substitute for clinical judgment
+author: Priyanshu Paul
+language: python
+framework: langgraph
+tags: [rag, healthcare, clinical-triage, langgraph, chromadb]
+industry: healthcare
+difficulty: advanced
+llm: llama-3.1-8b-instant
+entrypoint: agent.py
+requirements: requirements.txt
+
