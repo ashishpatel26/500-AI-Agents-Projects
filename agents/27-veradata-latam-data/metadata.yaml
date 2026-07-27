@@ -1,0 +1,11 @@
+title: veradata-latam-data
+description: Verified Latin American data via the VeraData API — sanctions screening, entity enrichment, and real-time LATAM central bank rates, for autonomous agents
+author: teodorofodocrispin-cmyk
+language: python
+framework: other
+tags: [latam, compliance, financial-data, enrichment, x402, data]
+industry: general
+difficulty: beginner
+llm: none
+entrypoint: agent.py
+requirements: requirements.txt
