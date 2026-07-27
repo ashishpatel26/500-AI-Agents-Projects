@@ -15,6 +15,8 @@ VeraData API — no data pipeline code ships in this repo.
 - **Central bank rates** — CO/MX/BR/CL/PE, including Argentina *dólar blue*
 - **EU AI Act Art. 12/13** compliant hash-chain audit trail
 
+> **Author affiliation:** This agent wraps the VeraData API, a project by the same author (teodorofodocrispin-cmyk). It is an official client, not a third-party wrapper.
+
 ## Why it matters
 
 Autonomous agents operating in LATAM need verified data (is this counterparty
