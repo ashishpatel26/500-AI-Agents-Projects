@@ -1,0 +1,11 @@
+title: multimodal-media-generation-agent
+description: Plans a campaign asset, selects a live Atlas Cloud media model, validates its schema, and optionally submits an image or video generation job
+author: binyangzhu000-sudo
+language: python
+framework: other
+tags: [multimodal, media-generation, marketing, atlas-cloud, async-api]
+industry: marketing
+difficulty: intermediate
+llm: atlas-cloud-media-api
+entrypoint: agent.py
+requirements: requirements.txt
