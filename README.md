@@ -64,23 +64,36 @@ python agent.py
 
 ---
 
-## 📊 Framework Comparison
+## 🧩 Use Case Table
 
-Choosing a framework? Here's when to use each:
+| Use Case                                    | Industry         | Description                                              | Code Github                                                                                                                                                                          |
+| ------------------------------------------- | ---------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **HIA (Health Insights Agent)**       | Healthcare       | analyses medical reports and provide health insights.    | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/harshhh28/hia.git)                                                                             |
+| **AI Health Assistant**               | Healthcare       | Diagnoses and monitors diseases using patient data.      | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ahmadvh/AI-Agents-for-Medical-Diagnostics.git)                                                 |
+| **Automated Trading Bot**             | Finance          | Automates stock trading with real-time market analysis.  | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MingyuJ666/Stockagent.git)                                                                     |
+| **Virtual AI Tutor**                  | Education        | Provides personalized education tailored to users.       | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/hqanhh/EduGPT.git)                                                                             |
+| **24/7 AI Chatbot**                   | Customer Service | Handles customer queries around the clock.               | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/NirDiamant/GenAI_Agents/blob/main/all_agents_tutorials/customer_support_agent_langgraph.ipynb) |
+| **Product Recommendation Agent**      | Retail           | Suggests products based on user preferences and history. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/microsoft/RecAI)                                                                               |
+| **Self-Driving Delivery Agent**       | Transportation   | Optimizes routes and autonomously delivers packages.     | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/sled-group/driVLMe)                                                                            |
+| **Factory Process Monitoring Agent**  | Manufacturing    | Monitors production lines and ensures quality control.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/yuchenxia/llm4ias)                                                                             |
+| **Property Pricing Agent**            | Real Estate      | Analyzes market trends to determine property prices.     | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/AleksNeStu/ai-real-estate-assistant)                                                           |
+| **Smart Farming Assistant**           | Agriculture      | Provides insights on crop health and yield predictions.  | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/mohammed97ashraf/LLM_Agri_Bot)                                                                 |
+| **Energy Demand Forecasting Agent**   | Energy           | Predicts energy usage to optimize grid management.       | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/yecchen/MIRAI)                                                                                 |
+| **Content Personalization Agent**     | Entertainment    | Recommends personalized media based on preferences.      | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/crosleythomas/MirrorGPT)                                                                       |
+| **Legal Document Review Assistant**   | Legal            | Automates document review and highlights key clauses.    | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/firica/legalai)                                                                                |
+| **Recruitment Recommendation Agent**  | Human Resources  | Suggests best-fit candidates for job openings.           | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/sentient-engineering/jobber)                                                                   |
+| **Virtual Travel Assistant**          | Hospitality      | Plans travel itineraries based on preferences.           | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/nirbar1985/ai-travel-agent)                                                                    |
+| **AI Game Companion Agent**           | Gaming           | Enhances player experience with real-time assistance.    | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/onjas-buidl/LLM-agent-game)                                                                    |
+| **Real-Time Threat Detection Agent**  | Cybersecurity    | Identifies potential threats and mitigates attacks.      | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/NVISOsecurity/cyber-security-llm-agents)                                                       |
+| **E-commerce Personal Shopper Agent** | E-commerce       | Helps customers find products they’ll love.             | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/Hoanganhvu123/ShoppingGPT)                                                                     |
+| **Logistics Optimization Agent**      | Supply Chain     | Plans efficient delivery routes and manages inventory.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/microsoft/OptiGuide)                                                                           |
+| **Vibe Hacking Agent**                | Cybersecurity    | Autonomous Multi-Agent Based Red Team Testing Service.   | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PurpleAILAB/Decepticon) |
+| **MediSuite-Ai-Agent**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         | 
+| **Lina-Egyptian-Medical-Chatbot**  | Health insurance  | A medical ai agent that helps automating the process of hospitals / insurance claiming workflow. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MahmoudRabea13/MediSuite-Ai-Agent)                                         |
+| **LinkedIn Outreach Agent**        | Sales             | Generates personalized connection requests and multi-step follow-ups using Claude. | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ashishpatel26/500-AI-Agents-Projects/tree/main/linkedin-outreach-agent) |
 
-| Framework | Best For | Complexity | Multi-Agent | Streaming | Local LLM |
-|---|---|---|---|---|---|
-| **LangGraph** | Stateful workflows, RAG pipelines, complex graphs | ⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **CrewAI** | Role-based teams, business automation, rapid prototyping | ⭐⭐ | ✅ | ✅ | ✅ |
-| **AutoGen** | Code generation, research, self-healing workflows | ⭐⭐⭐ | ✅ | ✅ | ✅ |
-| **Agno** | Lightweight single agents, tool integration, fast iteration | ⭐ | ✅ | ✅ | ✅ |
-| **LlamaIndex** | Document Q&A, enterprise RAG, data pipelines | ⭐⭐ | ⚠️ | ✅ | ✅ |
 
-**Quick decision guide:**
-- Just starting out → **Agno** or **CrewAI**
-- Need stateful graphs + RAG → **LangGraph**
-- Building code-writing / research agents → **AutoGen**
-- Enterprise document pipelines → **LlamaIndex**
+## Framework wise Usecases
 
 ---
 
@@ -165,19 +178,13 @@ Microsoft's framework for code generation, execution, and multi-agent research.
 | 🧑‍💻 Code Generation and Q&A with Retrieval Augmented Agents | Software Development | Generates code and answers questions using retrieval-augmented methods | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_RetrieveChat) |
 | 🧠 Code Generation and Q&A with Qdrant-based Retrieval | Software Development | Utilizes Qdrant for enhanced retrieval-augmented agent performance | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_RetrieveChat_qdrant) |
 
-**Multi-Agent Collaboration**
+### **Framework Name**: **Anthropic Claude**
 
-| Use Case | Industry | Description | Notebook |
-|---|---|---|---|
-| 🤝 Group Chat (3 members, 1 manager) | Collaboration | Demonstrates group task-solving via multi-agent collaboration | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_groupchat) |
-| 📊 Data Visualization by Group Chat | Data Analysis | Uses multi-agent collaboration to create data visualizations | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_groupchat_vis) |
-| 🧩 Complex Task Solving by Group Chat (6 members) | Collaboration | Solves complex tasks collaboratively with a larger group | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_groupchat_research) |
-| 🧑‍💻 Task Solving with Coding & Planning Agents | Planning & Dev | Combines coding and planning agents for solving tasks | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://github.com/microsoft/autogen/blob/0.2/notebook/agentchat_planning.ipynb) |
-| 📐 Task Solving with Graph Transition Paths | Collaboration | Uses predefined transition paths in a graph for solving tasks | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/docs/notebooks/agentchat_groupchat_finite_state_machine) |
-| 🧠 SocietyOfMindAgent Inner-Monologue | Cognitive Sciences | Simulates inner-monologue for problem-solving using group chats | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_society_of_mind) |
-| 🔧 Group Chat with Custom Speaker Selection | Collaboration | Implements a custom function for speaker selection | [![Notebook](https://img.shields.io/badge/View-Notebook-blue?logo=jupyter)](https://microsoft.github.io/autogen/0.2/docs/notebooks/agentchat_groupchat_customized) |
+> **UseCase**
 
-**Sequential Multi-Agent Chats**
+| Use Case | Industry | Description | GitHub |
+| :--- | :--- | :--- | :--- |
+| 🤖 LinkedIn Outreach Agent | 💼 Sales | Generates personalized connection requests and multi-step follow-up sequences using Claude. | [![GitHub](https://img.shields.io/badge/GitHub-Repository-blue)](https://github.com/ashishpatel26/500-AI-Agents-Projects/tree/main/linkedin-outreach-agent) |
 
 | Use Case | Industry | Description | Notebook |
 |---|---|---|---|
