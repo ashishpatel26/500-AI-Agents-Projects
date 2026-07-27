@@ -272,14 +272,7 @@ State-machine framework for complex, stateful agent workflows and RAG pipelines.
 | 🧠 Self-RAG | Information Retrieval | System reflects on responses and retrieves additional info if needed | [![Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag.ipynb) |
 | 🧠 Adaptive RAG (Local) | Information Retrieval | Adaptive RAG with local models for offline use | [![Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_adaptive_rag_local.ipynb) |
 | 🧠 Self-RAG (Local) | Information Retrieval | Self-RAG using local models and data sources | [![Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/rag/langgraph_self_rag_local.ipynb) |
-
----
-
-## 🛠️ Agent Infrastructure & Execution Backends
-
-| Tool | Description |
-|---|---|
-| 🔗 [cowork-to-code-bridge](https://github.com/abhinaykrupa/cowork-to-code-bridge) | MCP server exposing a Claude Code subscription as a local execution backend for agents. Zero network ports, token-authenticated, production-ready. Enables agents to execute code locally without API key management or separate billing. |
+| 🔗 Local Execution Bridge | Developer Tools | Sandboxed agents delegate build/test/git tasks to Claude Code on the developer's own machine, over a shared directory with no network ports | [![Python](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Python&color=%23244cd1)](https://github.com/abhinaykrupa/cowork-to-code-bridge) |
 
 ---
 
