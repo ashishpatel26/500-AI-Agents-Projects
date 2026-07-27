@@ -9,6 +9,8 @@ The oracle logic — contract security scanning (GoPlus), call simulation
 (Alchemy), and ed25519 receipt signing — lives behind the API, so no
 security-critical code ships in this repo.
 
+> **Author affiliation:** This agent wraps the SENTINEL API, a project by the same author (teodorofodocrispin-cmyk). It is an official client, not a third-party wrapper.
+
 ## Why it matters
 
 Autonomous agents that move funds will, at some point, be asked to sign a
