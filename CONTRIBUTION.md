@@ -24,29 +24,35 @@ If your contribution is large (new category, many projects, major refactor) plea
 ## Project folder requirements (must-have)
 Each agent project added must include the following at the top level of its folder:
 
-- README.md — concise description, intended use-case, quick start with exact commands, expected output, and runtime (CPU/GPU/time).
-- LICENSE or a note referencing repository root LICENSE (see root LICENSE).
-- requirements.txt, pyproject.toml, or environment.yml (pin critical dependency versions).
-- One or more runnable examples (script or notebook) that reproduce the core behavior.
-  - Provide minimal example(s) that run in <10 minutes on a modest machine where possible.
-- tests/ or a smoke-test script with instructions to run them.
-- metadata.yaml or metadata.json (see example below).
-- small models / datasets should be included only if tiny. Prefer external hosting (Hugging Face, S3, Google Drive) with a download script.
+Agents live in `agents/NN-agent-name/` where `NN` is the next free number. Copy the
+layout of an existing agent — `agents/01-web-research-agent/` is the reference. Exactly
+five files, nothing more:
 
-Example metadata schema (recommended)
+- `README.md` — what it does, quick start with exact commands, sample output, and rough runtime.
+- `agent.py` — the runnable entrypoint. Must run end-to-end in under 10 minutes.
+  A notebook is fine instead if the demo is genuinely better that way.
+- `requirements.txt` — pin your versions. `pyproject.toml` or `environment.yml` also fine.
+- `.env.example` — every env var the agent needs, with placeholder values. Never a real key.
+- `metadata.yaml` — see the schema below.
+
+Everything here is MIT under the repository root `LICENSE`. If your agent pulls in code,
+models, or data under a different licence, say so in your README and link the source.
+
+Large models and datasets don't belong in the repo. Host them externally (Hugging Face,
+S3, Zenodo) and add a download script.
+
+metadata.yaml schema
 ```yaml
-title: quick-chatbot-agent
-author: Your Name <you@example.com>
+title: web-research-agent
+description: Searches the web for a topic and synthesizes a structured research report
+author: your-github-username
 language: python
-tags:
-  - llm
-  - agent
-  - rl
-license: MIT
-datasets:
-  - name: example-dialogs
-    url: https://...
-entrypoint: run_demo.py
+framework: langgraph        # langgraph | crewai | autogen | agno | llamaindex | other
+tags: [research, web-search, rag, langgraph]
+industry: general
+difficulty: intermediate    # beginner | intermediate | advanced
+llm: gpt-4o-mini
+entrypoint: agent.py
 requirements: requirements.txt
 ```
 
@@ -101,10 +107,41 @@ requirements: requirements.txt
 ## PR process and checklist
 Before opening a PR:
 - [ ] Fork and create a branch: feat/<short-desc> or fix/<short-desc>
+- [ ] Sign off every commit with `git commit -s` (see below)
 - [ ] Update README and metadata
-- [ ] Include tests or a smoke-test demonstration
+- [ ] Paste real sample output from a run into your agent's README
 - [ ] Ensure no secrets or private data are included
+- [ ] Rebase onto current `main` — README moves fast and stale branches conflict
 - [ ] Confirm license compatibility for added assets
+
+### Sign your commits (DCO)
+
+Every commit needs a `Signed-off-by` line. Use `-s` and git adds it for you:
+
+```bash
+git commit -s -m "add my agent"
+```
+
+Which appends:
+
+```
+Signed-off-by: Your Name <you@example.com>
+```
+
+Forgot on commits you already pushed? Fix them all at once:
+
+```bash
+git rebase --signoff origin/main
+git push --force-with-lease
+```
+
+Set `git config user.name` and `git config user.email` first, since the sign-off must
+match the commit author. A CI check enforces this on every PR.
+
+This is the [Developer Certificate of Origin](https://developercertificate.org/) — by
+signing off you're stating that you wrote the contribution, or otherwise have the right
+to submit it under this repository's MIT licence. There's no separate form to fill in
+and nothing is stored beyond the commit itself.
 
 PR description should include:
 - What changed and why
