@@ -28,7 +28,7 @@ from pydantic import BaseModel, Field, ValidationError
 
 load_dotenv()
 
-if sys.stdout.encoding.lower() != "utf-8":  # emoji-safe output on legacy Windows consoles
+if (sys.stdout.encoding or "").lower() != "utf-8":  # emoji-safe output on legacy Windows consoles
     sys.stdout.reconfigure(encoding="utf-8")
 
 DEFAULT_MODEL = "llama-3.3-70b-versatile"
@@ -116,7 +116,7 @@ CRITIC_PROMPT = """You are a music playlist quality critic. Evaluate the playlis
 Return ONLY valid JSON — no markdown, no extra text:
 {"score": 8, "issues": ["issue 1"], "feedback": "actionable instructions for the curator"}
 
-Score 8-10: excellent, accept as-is. Score 5-7: decent but fixable. Score 1-4: significant problems."""
+Score 7-10: excellent, accept as-is. Score 4-6: decent but fixable. Score 1-3: significant problems."""
 
 
 # --- LLM helpers ------------------------------------------------------------------
@@ -131,10 +131,19 @@ def strip_fences(raw: str) -> str:
     return raw[start:end + 1] if start != -1 and end > start else raw
 
 
+def content_to_text(content) -> str:
+    """Normalize AIMessage.content, which may be a string or a list of content parts."""
+    if isinstance(content, str):
+        return content
+    if isinstance(content, list):
+        return "".join(part if isinstance(part, str) else str(part.get("text", "")) for part in content)
+    return str(content)
+
+
 def invoke_json(llm: ChatGroq, messages: list, schema: type, label: str, max_attempts: int = 3):
     """Invoke the LLM, parse + validate the JSON response, retrying on failure."""
     for attempt in range(max_attempts):
-        raw = str(llm.invoke(messages).content)
+        raw = content_to_text(llm.invoke(messages).content)
         try:
             return schema(**json.loads(strip_fences(raw)))
         except (json.JSONDecodeError, ValidationError) as exc:
