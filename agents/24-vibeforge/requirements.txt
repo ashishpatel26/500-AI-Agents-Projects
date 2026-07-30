@@ -1,0 +1,5 @@
+langchain-core==1.4.8
+langchain-groq==1.1.3
+langgraph==1.2.6
+pydantic==2.12.5
+python-dotenv==1.2.2
