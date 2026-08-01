@@ -1,0 +1,25 @@
+{
+  // Scoped to the docs contributors actually edit. The course content and
+  // internal notes are left alone on purpose.
+  "globs": ["README.md", "CONTRIBUTION.md", "SECURITY.md", "CODE_OF_CONDUCT.md", "agents/**/*.md"],
+
+  "config": {
+    // Cosmetic rules are off on purpose - this repo is tables and badges, and
+    // reformatting 400 lines to satisfy a linter buys nothing.
+    "MD013": false, // line length - every table row exceeds 80 chars
+    "MD022": false, // blank lines around headings
+    "MD031": false, // blank lines around fences
+    "MD032": false, // blank lines around lists
+    "MD033": false, // inline HTML - the badge and centering blocks need it
+    "MD034": false, // bare URLs - contact emails are intentional
+    "MD036": false, // emphasis as heading - deliberate in the AutoGen subsections
+    "MD040": false, // fence language - sample-output blocks have none by design
+    "MD041": false, // first line must be a heading
+    "MD060": false, // table pipe spacing
+
+    // What stays on is the set that catches real defects in contributor PRs:
+    // MD011 reversed link syntax, MD042 empty links, MD051 broken heading
+    // anchors, MD039 spaces inside link text, MD024 duplicate headings.
+    "MD024": { "siblings_only": true }
+  }
+}

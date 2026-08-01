@@ -90,11 +90,11 @@ Choosing a framework? Here's when to use each:
 
 | Use Case | Industry | Description | Code |
 |---|---|---|---|
-| **HIA (Health Insights Agent)** | Healthcare | Analyses medical reports and provides health insights | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/harshhh28/hia.git) |
-| **AI Health Assistant** | Healthcare | Diagnoses and monitors diseases using patient data | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ahmadvh/AI-Agents-for-Medical-Diagnostics.git) |
-| **Automated Trading Bot** | Finance | Automates stock trading with real-time market analysis | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MingyuJ666/Stockagent.git) |
+| **HIA (Health Insights Agent)** | Healthcare | Analyses medical reports and provides health insights | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/harshhh28/hia) |
+| **AI Health Assistant** | Healthcare | Diagnoses and monitors diseases using patient data | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ahmadvh/AI-Agents-for-Medical-Diagnostics) |
+| **Automated Trading Bot** | Finance | Automates stock trading with real-time market analysis | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/MingyuJ666/Stockagent) |
 | **Agent Wallet SDK** | Finance | Non-custodial smart contract wallet SDK for AI agents with enforced spend limits | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/up2itnow0822/agent-wallet-sdk) |
-| **Virtual AI Tutor** | Education | Provides personalized education tailored to users | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/hqanhh/EduGPT.git) |
+| **Virtual AI Tutor** | Education | Provides personalized education tailored to users | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/hqanhh/EduGPT) |
 | **24/7 AI Chatbot** | Customer Service | Handles customer queries around the clock | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/NirDiamant/GenAI_Agents/blob/main/all_agents_tutorials/customer_support_agent_langgraph.ipynb) |
 | **Product Recommendation Agent** | Retail | Suggests products based on user preferences and history | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/microsoft/RecAI) |
 | **Self-Driving Delivery Agent** | Transportation | Optimizes routes and autonomously delivers packages | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/sled-group/driVLMe) |
@@ -111,9 +111,12 @@ Choosing a framework? Here's when to use each:
 | **E-commerce Personal Shopper Agent** | E-commerce | Helps customers find products they'll love | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/Hoanganhvu123/ShoppingGPT) |
 | **Logistics Optimization Agent** | Supply Chain | Plans efficient delivery routes and manages inventory | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/microsoft/OptiGuide) |
 | **Vibe Hacking Agent** | Cybersecurity | Autonomous Multi-Agent Based Red Team Testing Service | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/PurpleAILAB/Decepticon) |
+| **Agent Memory Guard** | Cybersecurity | Detects and blocks memory poisoning attacks (OWASP ASI06) in AI agent memory stores | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/OWASP/www-project-agent-memory-guard) |
 | **Citadel** | Software Development | Orchestrates Claude Code agent fleets with lifecycle hooks, skills, campaign management, and postmortem-driven architecture | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/SethGammon/Citadel) |
 | **MediSuite-AI-Agent** | Health Insurance | Automates hospital / insurance claiming workflow | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/ahmedmansour5/MediSuite-Ai-Agent) |
 | **Lina Egyptian Medical Chatbot** | Healthcare | Egyptian medical assistant chatbot | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/dina-khalid/Lina-Egyptian-Medical-Chatbot) |
+| **NextRole (AI Career Assistant)** | Human Resources | Tailors a resume to a job description and generates interview prep plus a day-of battlecard via a multi-agent system | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/tam159/next-role) |
+| **PII Sanitization Agent** | Privacy/Compliance | Redacts PII (emails, phones, national IDs, bank accounts, API keys) from text before it reaches an LLM; fail-closed, multilingual, on-chain proof via TrustBoost | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer) |
 
 ---
 
@@ -294,20 +297,9 @@ See [CONTRIBUTION.md](CONTRIBUTION.md) for full requirements (metadata.yaml, req
 
 ## Star History
 
-<picture>
-  <source
-    media="(prefers-color-scheme: dark)"
-    srcset="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
-  />
-  <source
-    media="(prefers-color-scheme: light)"
-    srcset="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
-  />
-  <img
-    alt="Star History Chart"
-    src="https://api.star-history.com/svg?repos=ashishpatel26/500-AI-Agents-Projects&type=date&legend=top-left"
-  />
-</picture>
+[![Star History Chart](images/star-history.svg)](https://star-history.com/#ashishpatel26/500-AI-Agents-Projects&Date)
+
+<sub>Regenerated weekly from the GitHub API by [`.github/workflows/star-history.yml`](.github/workflows/star-history.yml). Click the chart for the interactive version.</sub>
 
 ---
 

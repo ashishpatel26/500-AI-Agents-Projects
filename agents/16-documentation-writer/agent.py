@@ -26,16 +26,18 @@ def extract_structure(code: str) -> str:
         tree = ast.parse(code)
         structure = []
 
-        for node in ast.walk(tree):
-            if isinstance(node, ast.FunctionDef):
+        for node in tree.body:
+            if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
                 args = [a.arg for a in node.args.args]
-                structure.append(f"def {node.name}({', '.join(args)})")
+                prefix = "async def" if isinstance(node, ast.AsyncFunctionDef) else "def"
+                structure.append(f"{prefix} {node.name}({', '.join(args)})")
             elif isinstance(node, ast.ClassDef):
                 structure.append(f"class {node.name}:")
                 for item in node.body:
-                    if isinstance(item, ast.FunctionDef):
+                    if isinstance(item, (ast.FunctionDef, ast.AsyncFunctionDef)):
                         args = [a.arg for a in item.args.args]
-                        structure.append(f"  def {item.name}({', '.join(args)})")
+                        prefix = "async def" if isinstance(item, ast.AsyncFunctionDef) else "def"
+                        structure.append(f"  {prefix} {item.name}({', '.join(args)})")
 
         return "\n".join(structure)
     except Exception:

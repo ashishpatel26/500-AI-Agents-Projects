@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="400" viewBox="0 0 800 400" role="img" aria-label="Star history for ashishpatel26/500-AI-Agents-Projects">
+<style>
+  .bg{fill:#ffffff} .grid{stroke:#d8dee4;stroke-width:1}
+  .lbl{fill:#57606a;font:12px -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+  .ttl{fill:#1f2328;font:600 14px -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+  .ln{fill:none;stroke:#ffc107;stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}
+  .ar{fill:#ffc107;opacity:.15}
+  @media (prefers-color-scheme: dark){
+    .bg{fill:#0d1117} .grid{stroke:#30363d} .lbl{fill:#8b949e} .ttl{fill:#e6edf3}
+  }
+</style>
+<rect width="800" height="400" class="bg"/>
+<line x1="70" y1="350.0" x2="770" y2="350.0" class="grid"/>
+<line x1="70" y1="286.0" x2="770" y2="286.0" class="grid"/>
+<line x1="70" y1="222.0" x2="770" y2="222.0" class="grid"/>
+<line x1="70" y1="158.0" x2="770" y2="158.0" class="grid"/>
+<line x1="70" y1="94.0" x2="770" y2="94.0" class="grid"/>
+<line x1="70" y1="30.0" x2="770" y2="30.0" class="grid"/>
+<polygon points="70,350 70.0,350.0 265.7,344.2 327.4,338.5 335.4,332.7 336.8,326.9 341.9,321.2 371.3,315.4 375.8,309.6 377.3,303.9 378.3,298.1 379.8,292.3 384.5,286.6 388.8,280.8 395.1,275.0 403.9,269.3 421.8,263.5 446.2,257.7 469.0,252.0 476.1,246.2 489.2,240.4 491.6,234.7 494.2,228.9 497.9,223.1 510.4,217.4 525.7,211.6 551.0,205.9 567.9,200.1 589.2,194.3 600.4,188.6 612.0,182.8 625.8,177.0 643.5,171.3 662.5,165.5 674.0,159.7 689.3,154.0 708.9,148.2 723.1,142.4 741.6,136.7 755.7,130.9 770.0,125.1 770.0,350" class="ar"/>
+<polyline points="70.0,350.0 265.7,344.2 327.4,338.5 335.4,332.7 336.8,326.9 341.9,321.2 371.3,315.4 375.8,309.6 377.3,303.9 378.3,298.1 379.8,292.3 384.5,286.6 388.8,280.8 395.1,275.0 403.9,269.3 421.8,263.5 446.2,257.7 469.0,252.0 476.1,246.2 489.2,240.4 491.6,234.7 494.2,228.9 497.9,223.1 510.4,217.4 525.7,211.6 551.0,205.9 567.9,200.1 589.2,194.3 600.4,188.6 612.0,182.8 625.8,177.0 643.5,171.3 662.5,165.5 674.0,159.7 689.3,154.0 708.9,148.2 723.1,142.4 741.6,136.7 755.7,130.9 770.0,125.1" class="ln"/>
+<text x="60" y="354.0" class="lbl" text-anchor="end">0</text>
+<text x="60" y="290.0" class="lbl" text-anchor="end">10k</text>
+<text x="60" y="226.0" class="lbl" text-anchor="end">20k</text>
+<text x="60" y="162.0" class="lbl" text-anchor="end">30k</text>
+<text x="60" y="98.0" class="lbl" text-anchor="end">40k</text>
+<text x="60" y="34.0" class="lbl" text-anchor="end">50k</text>
+<text x="70.0" y="372" class="lbl" text-anchor="middle">Dec 2024</text>
+<text x="245.0" y="372" class="lbl" text-anchor="middle">May 2025</text>
+<text x="420.0" y="372" class="lbl" text-anchor="middle">Oct 2025</text>
+<text x="595.0" y="372" class="lbl" text-anchor="middle">Mar 2026</text>
+<text x="770.0" y="372" class="lbl" text-anchor="middle">Jul 2026</text>
+<text x="70" y="20" class="ttl">ashishpatel26/500-AI-Agents-Projects &#183; 35,136 stars</text>
+<text x="770" y="20" class="lbl" text-anchor="end">updated 25 Jul 2026</text>
+</svg>
