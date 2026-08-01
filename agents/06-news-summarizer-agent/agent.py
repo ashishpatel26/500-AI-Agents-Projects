@@ -11,10 +11,11 @@ Usage:
 import argparse
 import os
 
-import requests
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
+# Use a shared HTTP session to enable connection pooling and lower latency
+from agents._common import get_http_session
 
 load_dotenv()
 
@@ -31,7 +32,8 @@ def fetch_news(topic: str, count: int = 5) -> list[dict]:
         ]
 
     url = f"https://newsapi.org/v2/everything?q={topic}&language=en&pageSize={count}&sortBy=publishedAt&apiKey={NEWS_API_KEY}"
-    response = requests.get(url, timeout=10)
+    session = get_http_session()
+    response = session.get(url, timeout=10)
     data = response.json()
     return data.get("articles", [])
 
