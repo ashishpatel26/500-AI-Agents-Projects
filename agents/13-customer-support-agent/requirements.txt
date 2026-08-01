@@ -5,4 +5,4 @@ langchain-community>=0.3.27
 langchain-text-splitters>=1.1.2
 langgraph>=1.0.10
 faiss-cpu==1.9.0
-python-dotenv==1.0.1
+python-dotenv>=1.2.2
