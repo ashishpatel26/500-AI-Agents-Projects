@@ -3,4 +3,4 @@ langchain-core>=1.2.22
 langchain-openai>=1.1.14
 langchain-tavily==0.1.0
 langgraph>=1.0.10
-python-dotenv==1.0.1
+python-dotenv>=1.2.2
