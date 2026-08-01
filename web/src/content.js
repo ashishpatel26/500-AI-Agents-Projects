@@ -71,17 +71,25 @@ function cleanCell(value = "") {
     .trim();
 }
 
+function isShieldsUrl(value = "") {
+  try {
+    return new URL(String(value)).hostname.toLowerCase() === "img.shields.io";
+  } catch {
+    return false;
+  }
+}
+
 function extractUrl(value = "") {
   const markdownUrls = Array.from(String(value).matchAll(/\]\((https?:\/\/[^)]+)\)/g))
     .map((match) => match[1])
-    .filter((url) => !url.includes("img.shields.io"));
+    .filter((url) => !isShieldsUrl(url));
   if (markdownUrls.length > 0) {
     return markdownUrls[markdownUrls.length - 1];
   }
 
   const directUrls = String(value)
     .match(/https?:\/\/[^\s)]+/g)
-    ?.filter((url) => !url.includes("img.shields.io"));
+    ?.filter((url) => !isShieldsUrl(url));
   return directUrls?.[directUrls.length - 1] || "";
 }
 

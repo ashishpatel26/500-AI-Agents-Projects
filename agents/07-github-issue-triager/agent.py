@@ -17,6 +17,8 @@ import re
 from dotenv import load_dotenv
 from langchain_core.messages import HumanMessage, SystemMessage
 from langchain_openai import ChatOpenAI
+# Use shared HTTP session for connection pooling
+from agents._common import get_http_session
 
 load_dotenv()
 
@@ -63,21 +65,16 @@ def triage_issue(title: str, body: str, labels: list[str] = None) -> dict:
 
 
 def fetch_github_issue(url: str) -> tuple[str, str, list]:
-    """Fetch issue details from GitHub API."""
-    import re
-    import requests
-
+    """Fetch issue details from GitHub API using a shared requests.Session."""
     match = re.match(r"https://github.com/([^/]+)/([^/]+)/issues/(\d+)", url)
     if not match:
         raise ValueError(f"Invalid GitHub issue URL: {url}")
 
     owner, repo, issue_num = match.groups()
     api_url = f"https://api.github.com/repos/{owner}/{repo}/issues/{issue_num}"
-    headers = {}
-    if token := os.getenv("GITHUB_TOKEN"):
-        headers["Authorization"] = f"token {token}"
 
-    r = requests.get(api_url, headers=headers, timeout=10)
+    session = get_http_session()
+    r = session.get(api_url, timeout=10)
     r.raise_for_status()
     data = r.json()
     return data["title"], data.get("body", ""), [l["name"] for l in data.get("labels", [])]
