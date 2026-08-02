@@ -50,8 +50,8 @@ MOSIP_MOCK_DATABASE = {
     }
 }
 
-def validate_uin_checksum(uin: str) -> bool:
-    """Verifies MOSIP UIN format (UIN-XXXXXXXXXX with 10 digits)."""
+def validate_uin_format(uin: str) -> bool:
+    """Validates MOSIP UIN format (UIN-XXXXXXXXXX with 10 digits)."""
     pattern = r"^UIN-\d{10}$"
     return bool(re.match(pattern, uin))
 
@@ -75,8 +75,9 @@ def get_llm():
     if not LANGCHAIN_AVAILABLE:
         return None
     api_key = os.getenv("OPENAI_API_KEY")
+    model_name = os.getenv("OPENAI_MODEL", "gpt-4o-mini")
     if api_key and api_key != "your_openai_api_key_here":
-        return ChatOpenAI(model="gpt-4o-mini", temperature=0.0)
+        return ChatOpenAI(model=model_name, temperature=0.0)
     return None
 
 
@@ -132,17 +133,17 @@ Return JSON ONLY with keys: "match_score" (0-100), "reasoning" (string), "passed
         try:
             response = llm.invoke([SystemMessage(content="You return strict JSON."), HumanMessage(content=prompt)])
             res = json.loads(response.content)
-            return {"demographic_result": res, "status_logs": logs}
-        except Exception:
+            if isinstance(res, dict) and "match_score" in res and "passed" in res:
+                return {"demographic_result": res, "status_logs": logs}
+        except (json.JSONDecodeError, KeyError, TypeError):
             pass
 
-    # Deterministic fallback evaluation with character fuzzy matching
+    # Deterministic fallback evaluation
     name_claim = claim.get("full_name", "").lower().strip()
     name_ref = ref.get("full_name", "").lower().strip()
     dob_match = claim.get("dob") == ref.get("dob")
     gender_match = claim.get("gender", "").upper() == ref.get("gender", "").upper()
     
-    # Prefix / Substring matching for name variations
     claim_first = name_claim.split()[0] if name_claim else ""
     ref_first = name_ref.split()[0] if name_ref else ""
     
@@ -193,15 +194,15 @@ Return JSON ONLY with keys: "match_score" (0-100), "reasoning" (string), "passed
         try:
             response = llm.invoke([SystemMessage(content="You return strict JSON."), HumanMessage(content=prompt)])
             res = json.loads(response.content)
-            return {"address_result": res, "status_logs": logs}
-        except Exception:
+            if isinstance(res, dict) and "match_score" in res and "passed" in res:
+                return {"address_result": res, "status_logs": logs}
+        except (json.JSONDecodeError, KeyError, TypeError):
             pass
 
     c_addr = claim.get("address", "").lower()
     r_addr = ref.get("address", "").lower()
     p_match = claim.get("postal_code") == ref.get("postal_code")
     
-    # Check key structural words overlap
     c_words = set(re.findall(r'\w+', c_addr))
     r_words = set(re.findall(r'\w+', r_addr))
     word_overlap = len(c_words.intersection(r_words)) / max(len(r_words), 1)
@@ -218,19 +219,19 @@ Return JSON ONLY with keys: "match_score" (0-100), "reasoning" (string), "passed
 
 
 def security_compliance_worker_agent(state: MultiAgentState) -> Dict[str, Any]:
-    """Worker Agent 3: Checks UIN checksum, status, and fraud risk indicators."""
+    """Worker Agent 3: Checks UIN format, status, and fraud risk indicators."""
     logs = ["[Security Worker] Auditing MOSIP UIN format and security risk..."]
     
     claim = state["submitted_claim"]
     uin = claim.get("uin", "")
     ref = state.get("reference_record")
     
-    checksum_valid = validate_uin_checksum(uin)
+    format_valid = validate_uin_format(uin)
     status_active = ref.get("status") == "ACTIVE" if ref else False
     
-    if not checksum_valid:
+    if not format_valid:
         score = 0
-        reasoning = f"SECURITY ALERT: Invalid MOSIP UIN checksum format ({uin})."
+        reasoning = f"SECURITY ALERT: Invalid MOSIP UIN format structure ({uin})."
         passed = False
     elif not ref:
         score = 20
@@ -242,7 +243,7 @@ def security_compliance_worker_agent(state: MultiAgentState) -> Dict[str, Any]:
         passed = False
     else:
         score = 100
-        reasoning = "UIN checksum valid. Record is ACTIVE in MOSIP registry."
+        reasoning = "UIN format valid. Record is ACTIVE in MOSIP registry."
         passed = True
         
     return {
@@ -329,13 +330,32 @@ def run_multi_agent_pipeline(initial_state: MultiAgentState) -> MultiAgentState:
         graph = builder.compile()
         return graph.invoke(initial_state)
     else:
-        # Sequential multi-agent pipeline fallback
-        s1 = {**initial_state, **master_orchestrator_node(initial_state)}
-        s2 = {**s1, **demographic_worker_agent(s1)}
-        s3 = {**s2, **address_worker_agent(s2)}
-        s4 = {**s3, **security_compliance_worker_agent(s3)}
-        s5 = {**s4, **synthesis_aggregator_node(s4)}
-        return s5
+        # Sequential multi-agent pipeline fallback aggregating status_logs properly
+        o_res = master_orchestrator_node(initial_state)
+        s1 = {**initial_state, **o_res}
+        
+        d_res = demographic_worker_agent(s1)
+        a_res = address_worker_agent(s1)
+        sec_res = security_compliance_worker_agent(s1)
+        
+        combined_logs = s1.get("status_logs", []) + d_res.get("status_logs", []) + a_res.get("status_logs", []) + sec_res.get("status_logs", [])
+        
+        s_combined = {
+            **s1,
+            "demographic_result": d_res.get("demographic_result"),
+            "address_result": a_res.get("address_result"),
+            "security_result": sec_res.get("security_result"),
+            "status_logs": combined_logs
+        }
+        
+        agg_res = synthesis_aggregator_node(s_combined)
+        final_logs = s_combined["status_logs"] + agg_res.get("status_logs", [])
+        
+        return {
+            **s_combined,
+            "final_assessment": agg_res.get("final_assessment"),
+            "status_logs": final_logs
+        }
 
 
 # ============================================================================
