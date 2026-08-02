@@ -36,6 +36,7 @@ A curated collection of **500+ AI agent projects** — production examples, tuto
 Pick a framework and run an agent in under 5 minutes:
 
 ```bash
+- [Pixel Pet](https://letmethink.cc/app/pixel-pet/) - Turn a personality description into a deterministic ASCII pixel companion in the browser.
 # Clone the repo
 git clone https://github.com/ashishpatel26/500-AI-Agents-Projects.git
 cd 500-AI-Agents-Projects
