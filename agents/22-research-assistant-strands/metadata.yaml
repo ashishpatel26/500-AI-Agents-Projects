@@ -1,0 +1,11 @@
+title: research-assistant-strands
+description: Researches a topic on the live web and returns a typed, source-grounded brief
+author: elizabethfuentes12
+language: python
+framework: other
+tags: [research, strands, web-search, structured-output, agent-loop]
+industry: general
+difficulty: intermediate
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt
