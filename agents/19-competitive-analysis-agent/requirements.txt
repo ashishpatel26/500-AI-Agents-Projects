@@ -1,5 +1,5 @@
-langchain==0.3.0
-langchain-core==0.3.0
-langchain-openai==0.2.0
-langgraph==0.2.0
+langchain==1.4.2
+langchain-core==1.6.3
+langchain-openai==1.6.2
+langgraph==1.2.11
 python-dotenv==1.0.1
