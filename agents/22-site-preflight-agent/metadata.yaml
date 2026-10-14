@@ -1,0 +1,11 @@
+title: site-preflight-agent
+description: A web agent that gets a signed, locally verified decision from CrawlCheck before it reads or cites any site, and keeps every decision receipt
+author: emmanuelorta
+language: python
+framework: other
+tags: [web-agent, safety, preflight, verification, signed-receipts, robots]
+industry: cybersecurity
+difficulty: beginner
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

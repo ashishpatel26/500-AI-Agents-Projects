@@ -1,0 +1,2 @@
+crawlcheck==1.5.0
+openai==1.54.0
