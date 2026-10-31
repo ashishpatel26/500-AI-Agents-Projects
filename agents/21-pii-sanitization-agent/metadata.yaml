@@ -1,5 +1,5 @@
 title: pii-sanitization-agent
-description: Sanitizes common PII from text locally before it reaches LLMs or external APIs; zero-network, standard-library redaction
+description: Redacts PII locally before external API transmission; features local regex and checksum validation with secure TrustBoost API integration
 author: teodorofodocrispin-cmyk
 language: python
 framework: other
