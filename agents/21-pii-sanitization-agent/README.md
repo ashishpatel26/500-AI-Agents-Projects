@@ -18,6 +18,7 @@ When integrated with external services like the TrustBoost API (`https://api.tru
                     │      1. Local Detection & Sanitization       │
                     │   - RegEx patterns with strict boundaries    │
                     │   - Luhn checksum for payment cards          │
+                    │   - MOD-97 checksum for formatted IBANs      │
                     │   - ipaddress library for IPv4 / IPv6        │
                     │   - Standard library only / zero network     │
                     └──────────────────────┬───────────────────────┘
@@ -36,9 +37,11 @@ When integrated with external services like the TrustBoost API (`https://api.tru
 ### Key Security Guarantees
 
 1. **Local-First Pre-Sanitization**: Sensitive values are replaced with stable placeholders (`[EMAIL]`, `[PHONE]`, etc.) locally inside the host process before any network socket is opened.
-2. **Data Minimization**: The third-party API request body carries only the pre-sanitized text. Outgoing network payloads never contain raw sensitive data.
-3. **Safe Error Handling & Fallback**: If the third-party service is unreachable, times out, or returns HTTP 402/500, the agent fails closed / falls back safely to the locally sanitized result. Raw user inputs are never exposed in error messages, stack traces, or logs.
-4. **No Raw Input Echoing**: The command-line interface prints only the sanitized output, preventing sensitive data from leaking into terminal scrollback or CI logs.
+2. **Metadata Sanitization & Leakage Prevention**: Outbound metadata fields (`context`, `tx_hash`, `wallet_address`) are validated against strict contracts and screened so sensitive information is never leaked via metadata.
+3. **Data Minimization**: The third-party API request body carries only the pre-sanitized text. Outgoing network payloads never contain raw sensitive data.
+4. **Safe Error Handling & Fallback**: If the third-party service is unreachable, times out, or returns HTTP 402/500/malformed JSON, the agent fails closed / falls back safely to the locally sanitized result. Raw user inputs are never exposed in error messages, stack traces, or logs.
+5. **Idempotency & Retry Safety**: The TrustBoost API does not document or support server-side idempotency keys. To prevent duplicate charges or billing operations against the wallet, automatic blind retries are avoided.
+6. **No Raw Input Echoing**: The command-line interface prints only the sanitized output, preventing sensitive data from leaking into terminal scrollback or CI logs.
 
 ---
 
@@ -50,10 +53,11 @@ When integrated with external services like the TrustBoost API (`https://api.tru
 | **Phone Numbers** | International (`+1`, `+44`, `+91`), dashed, parenthesized, or unseparated (10–15 digits) | `[PHONE]` |
 | **Payment Cards** | Visa, MasterCard, Amex (13–19 digits) verified with Luhn checksum | `[CREDIT_CARD]` |
 | **US SSN** | US Social Security Numbers (`###-##-####`) | `[SSN]` |
-| **Government / Tax IDs** | National identification numbers (e.g., Mexican CURP 18-char, RFC 12–13 char) | `[GOV_ID]` |
+| **Government / Tax IDs** | Case-insensitive national identification numbers (e.g., Mexican CURP 18-char, RFC 12–13 char) | `[GOV_ID]` |
 | **IP Addresses** | Valid IPv4 and IPv6 addresses validated via `ipaddress` | `[IP_ADDRESS]` |
-| **Bank Accounts** | Labeled account numbers (`Account: ...`, `Cuenta: ...`) and IBAN formats | `[BANK_ACCOUNT]` |
-| **API Keys & Secrets** | OpenAI (`sk-...`), GitHub (`ghp_...`), AWS (`AKIA...`), and token strings | `[API_KEY]` |
+| **Bank Accounts** | Labeled account numbers (`Account: ...`, `Acc No: ...`, `Cuenta: ...`) with spaces/hyphens | `[BANK_ACCOUNT]` |
+| **Formatted IBANs** | Formatted IBANs with spaces or hyphens, case-insensitive, verified via MOD-97 checksum | `[BANK_ACCOUNT]` |
+| **API Keys & Secrets** | OpenAI (`sk-proj-...`, `sk-svcacct-...`, `sk-...`), GitHub (`github_pat_...`, `ghp_...`), AWS (`AKIA...`) | `[API_KEY]` |
 
 ---
 
@@ -72,16 +76,22 @@ pip install -r requirements.txt
 # 1. Sanitize text passed directly via CLI (local offline mode)
 python agent.py --text "Contact me at +1 (555) 123-4567 or email juan.perez@example.com"
 
-# 2. Sanitize an input file
+# 2. Sanitize explicitly empty string (safely returns empty output)
+python agent.py --text ""
+
+# 3. Sanitize an input file
 python agent.py --file input.txt
 
-# 3. Run built-in demo covering all supported PII categories
+# 4. Run built-in demo covering all supported PII categories
 python agent.py
 
-# 4. Run with TrustBoost API remote verification (pre-sanitizes locally before sending)
+# 5. Run with TrustBoost API remote verification (pre-sanitizes locally before sending)
 python agent.py --text "My email is alice@example.com" --api
 
-# 5. Run built-in regression self-checks
+# 6. Force local-only mode (overrides TRUSTBOOST_CALL_API=true in environment)
+python agent.py --text "My email is alice@example.com" --local
+
+# 7. Run built-in regression self-checks (zero network I/O)
 python agent.py --self-test
 ```
 
@@ -133,7 +143,7 @@ print(result["data"]["entities"])
 api_result = sanitize("Email user@example.com", call_api=True)
 ```
 
-`sanitize(text, context="general", tx_hash="TRIAL", call_api=False)` maintains full backward compatibility with previous call signatures.
+`sanitize(text, context="general", tx_hash="TRIAL", call_api=None, timeout=30)` maintains full backward compatibility with previous call signatures.
 
 ---
 
@@ -156,18 +166,19 @@ TRUSTBOOST_CALL_API=false
 
 ## Testing
 
-Run the automated test suite covering all detection patterns, error handling, and third-party API request security:
+Run the automated test suite covering all 11 Sourcery findings, edge cases, error handling, and third-party API request security:
 
 ```bash
-python -m unittest test_agent.py
+python test_agent.py -v
 ```
 
 ---
 
 ## Known Limitations
 
-- **Pattern & Checksum Limits**: While regex and checksum validation accurately identify structured PII (emails, cards, IPs, SSNs, phone numbers), unstructured or context-dependent identifiers (e.g., individual person names, physical street addresses, company names) require specialized Named Entity Recognition (NER) models.
-- **International Identifier Formats**: Regional tax and national identity formats vary by jurisdiction. Organizations with specialized identification formats should register additional regex patterns.
+- **Pattern & Checksum Limits**: While regex and checksum validation accurately identify structured PII (emails, cards, IPs, SSNs, phone numbers, API keys, IBANs), unstructured or context-dependent identifiers (e.g., individual person names, physical street addresses, company names) require specialized Named Entity Recognition (NER) models.
+- **Remote Idempotency**: The TrustBoost API does not document or support server-side idempotency keys. Network timeouts are caught safely, but automated blind retries are not performed to protect against duplicate billing.
+- **International Identifier Formats**: Regional tax and national identity formats vary by jurisdiction. Organizations with specialized identification formats should register additional custom regex patterns.
 - **High-Risk Environments**: Critical compliance pipelines (HIPAA, GDPR, PCI-DSS) should combine automated pre-sanitization with human-in-the-loop review.
 
 ---
