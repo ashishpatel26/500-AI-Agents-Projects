@@ -3,9 +3,9 @@ description: Multi-agent pipeline that matches a resume to a job description, ra
 author: Muq1937
 language: python
 framework: langgraph
-tags: [career, internship, resume, job-matching, gap-analysis, interview-prep, multi-agent, langgraph]
+tags: [career, internship, resume, job-matching, gap-analysis, interview-prep, multi-agent, langgraph, gemini]
 industry: human-resources
 difficulty: intermediate
-llm: tbd
+llm: gemini-3.6-flash
 entrypoint: agent.py
 requirements: requirements.txt
