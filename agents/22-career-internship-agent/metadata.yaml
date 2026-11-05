@@ -1,0 +1,11 @@
+title: career-internship-agent
+description: Multi-agent pipeline that matches a resume to a job description, ranks skill gaps, and recommends a personalized learning and interview-prep plan
+author: Muq1937
+language: python
+framework: langgraph
+tags: [career, internship, resume, job-matching, gap-analysis, interview-prep, multi-agent, langgraph]
+industry: human-resources
+difficulty: intermediate
+llm: tbd
+entrypoint: agent.py
+requirements: requirements.txt

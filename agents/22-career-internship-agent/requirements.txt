@@ -1,0 +1,4 @@
+langgraph==1.2.20
+pydantic==2.14.2
+python-dotenv==1.2.4
+pypdf==6.21.4
