@@ -306,4 +306,3 @@ One place to see **which industries already have an agent in this repo and which
 - [ ] Donor-outreach and grant-matching agent
 - [ ] Volunteer scheduling agent
 - [ ] Humanitarian-needs assessment from field reports
-
