@@ -1,0 +1,45 @@
+name: Monthly release
+
+# Cron has no "last day of month", so run on days 28-31 and let the first step
+# bail out unless tomorrow is the 1st. Manual runs (workflow_dispatch) skip that check.
+on:
+  schedule:
+    - cron: "0 6 28-31 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Tag and publish release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EVENT: ${{ github.event_name }}
+        run: |
+          set -euo pipefail
+
+          if [ "$EVENT" = "schedule" ] && [ "$(date -u -d tomorrow +%d)" != "01" ]; then
+            echo "Not the last day of the month, skipping."
+            exit 0
+          fi
+
+          tag="v$(date -u +%Y.%m)"
+          if git rev-parse -q --verify "refs/tags/$tag" >/dev/null; then
+            echo "$tag already exists, skipping."
+            exit 0
+          fi
+
+          last="$(git describe --tags --abbrev=0 2>/dev/null || true)"
+          if [ -n "$last" ] && [ -z "$(git log "$last"..HEAD --oneline)" ]; then
+            echo "No commits since $last, skipping."
+            exit 0
+          fi
+
+          gh release create "$tag" --target "$GITHUB_SHA" --title "$tag" --generate-notes
