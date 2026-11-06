@@ -1,0 +1,11 @@
+title: mosip-id-verification-agent
+description: Multi-agent MOSIP digital identity verification system with parallel demographic, address, and security compliance workers using LangGraph.
+author: anshu-ai-arch
+language: python
+framework: langgraph
+tags: [civic-tech, digital-identity, multi-agent, langgraph, mosip, verification]
+industry: general
+difficulty: advanced
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt
