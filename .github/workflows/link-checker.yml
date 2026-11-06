@@ -37,6 +37,10 @@ jobs:
             echo "run=true" >> "$GITHUB_OUTPUT"
           fi
 
+      # The two langgraph exclusions and the agno one below cover links that are
+      # dead upstream and have no successor in the current tree. The langgraph
+      # ones are pinned to the full URL so a same-named path in another
+      # repository is still checked.
       - name: Check links in README
         if: steps.changes.outputs.run == 'true'
         uses: lycheeverse/lychee-action@v1
@@ -49,7 +53,8 @@ jobs:
             --exclude 'img.shields.io'
             --exclude 'api.star-history.com'
             --exclude 'github\.com/ashishpatel26/500-AI-Agents-Projects'
-            --exclude 'github.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials'
+            --exclude 'github\.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/multi_agent/agent_supervisor\.ipynb'
+            --exclude 'github\.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/sql-agent\.ipynb'
             --exclude 'github.com/agno-agi/agno/blob/main/cookbook/examples'
             --timeout 30
             --retry-wait-time 5
