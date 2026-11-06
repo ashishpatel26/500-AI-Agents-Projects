@@ -71,18 +71,18 @@ function cleanCell(value = "") {
     .trim();
 }
 
-function extractUrl(value = "") {
+function extractUrls(value = "") {
   const markdownUrls = Array.from(String(value).matchAll(/\]\((https?:\/\/[^)]+)\)/g))
     .map((match) => match[1])
     .filter((url) => !url.includes("img.shields.io"));
   if (markdownUrls.length > 0) {
-    return markdownUrls[markdownUrls.length - 1];
+    return markdownUrls;
   }
 
   const directUrls = String(value)
     .match(/https?:\/\/[^\s)]+/g)
     ?.filter((url) => !url.includes("img.shields.io"));
-  return directUrls?.[directUrls.length - 1] || "";
+  return directUrls || [];
 }
 
 function splitTableRow(line = "") {
@@ -192,7 +192,8 @@ export function parseReadmeUseCases(markdown = repoReadme) {
           cleanCell(cells[0]);
         const description = cleanCell(pickRowValue(row, ["description", "best for"]));
         const industry = cleanCell(pickRowValue(row, ["industry", "domain", "category"]));
-        const url = extractUrl(cells.join(" "));
+        const urls = extractUrls(cells.join(" "));
+        const url = urls[urls.length - 1] || "";
 
         if (title && description) {
           const baseId = slugify(`${sourceHeading}-${title}`);
@@ -214,6 +215,7 @@ export function parseReadmeUseCases(markdown = repoReadme) {
             sourceGroup: h2,
             sourceSubheading: [h3, subheading].filter(Boolean).join(" / "),
             url,
+            urls: [...new Set(urls)],
             resourceType: /notebook|ipynb/i.test(url) ? "Notebook" : "Code",
             tags: [
               inferFramework(sourceHeading),

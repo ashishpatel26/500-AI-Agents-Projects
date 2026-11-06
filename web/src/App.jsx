@@ -391,7 +391,12 @@ function UseCaseCard({ useCase }) {
           <FileText size={15} aria-hidden="true" />
           Detail
         </a>
-        {useCase.url ? (
+        {useCase.urls.length > 1 ? useCase.urls.map((url) => (
+          <a href={url} key={url}>
+            <ExternalLink size={15} aria-hidden="true" />
+            {url.startsWith("https://github.com/") ? "GitHub" : "Website"}
+          </a>
+        )) : useCase.url ? (
           <a href={pathFor(`/go/${useCase.id}`)}>
             <ExternalLink size={15} aria-hidden="true" />
             Redirect
@@ -713,7 +718,12 @@ function UseCasePage({ useCase }) {
               <strong>{useCase.resourceType}</strong>
             </div>
           </section>
-          {useCase.url ? (
+          {useCase.urls.length > 1 ? useCase.urls.map((url) => (
+            <a className="primary-action full-width" href={url} key={url}>
+              <ExternalLink size={18} aria-hidden="true" />
+              {url.startsWith("https://github.com/") ? "Open GitHub" : "Open website"}
+            </a>
+          )) : useCase.url ? (
             <a className="primary-action full-width" href={pathFor(`/go/${useCase.id}`)}>
               <ExternalLink size={18} aria-hidden="true" />
               Open redirect
