@@ -55,7 +55,6 @@ jobs:
             --exclude 'github\.com/ashishpatel26/500-AI-Agents-Projects'
             --exclude 'github\.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/multi_agent/agent_supervisor\.ipynb'
             --exclude 'github\.com/langchain-ai/langgraph/blob/main/docs/docs/tutorials/sql-agent\.ipynb'
-            --exclude 'github.com/agno-agi/agno/blob/main/cookbook/examples'
             --timeout 30
             --retry-wait-time 5
             --max-retries 3
