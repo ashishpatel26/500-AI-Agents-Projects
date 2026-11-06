@@ -6,10 +6,8 @@ on:
     paths:
       - '**.md'
       - '.markdownlint-cli2.jsonc'
+  # No path filter: required check must report on every PR; lint is skipped when no markdown changed.
   pull_request:
-    paths:
-      - '**.md'
-      - '.markdownlint-cli2.jsonc'
   workflow_dispatch:
 
 permissions:
@@ -20,8 +18,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect markdown changes
+        id: changes
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ "$EVENT" = "pull_request" ] && ! git diff --name-only "$BASE_SHA" HEAD | grep -qE '[.]md$|^[.]markdownlint-cli2[.]jsonc$'; then
+            echo "No markdown changes, skipping lint."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Lint markdown
+        if: steps.changes.outputs.run == 'true'
         uses: DavidAnson/markdownlint-cli2-action@v20
         with:
           globs: ''
