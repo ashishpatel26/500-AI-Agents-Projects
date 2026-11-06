@@ -1,0 +1,11 @@
+title: advanced-rag-agent
+description: Advanced RAG agent with self-grading, adaptive routing, and hallucination loops in LangGraph
+author: ashishpatel26
+language: python
+framework: langgraph
+tags: [rag, langgraph, adaptive-rag, corrective-rag, self-rag, faiss]
+industry: research
+difficulty: advanced
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt
