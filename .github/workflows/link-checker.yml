@@ -7,9 +7,9 @@ on:
     branches: [main]
     paths:
       - 'README.md'
+  # No path filter: the check is required on main, so it must report on every PR.
+  # The job skips the slow link scan when README.md is untouched (see the changes step).
   pull_request:
-    paths:
-      - 'README.md'
   workflow_dispatch:
 
 permissions:
@@ -21,12 +21,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Detect README changes
+        id: changes
+        env:
+          EVENT: ${{ github.event_name }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ "$EVENT" = "pull_request" ] && ! git diff --name-only "$BASE_SHA" HEAD | grep -qx 'README.md'; then
+            echo "README.md unchanged, skipping link scan."
+            echo "run=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "run=true" >> "$GITHUB_OUTPUT"
+          fi
 
       # The two langgraph exclusions and the agno one below cover links that are
       # dead upstream and have no successor in the current tree. The langgraph
       # ones are pinned to the full URL so a same-named path in another
       # repository is still checked.
       - name: Check links in README
+        if: steps.changes.outputs.run == 'true'
         uses: lycheeverse/lychee-action@v1
         with:
           args: |
