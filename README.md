@@ -275,6 +275,16 @@ State-machine framework for complex, stateful agent workflows and RAG pipelines.
 
 ---
 
+### Foundry
+
+Lightweight, zero-dependency Node.js AI worker control room & multi-agent task runner.
+
+| Use Case | Industry | Description | Code |
+|---|---|---|---|
+| 🤖 Local AI Worker Control Room | AI / Automation | Production-ready, Node.js-based orchestration layer for managing concurrent local AI workers safely | [![Node.js](https://img.shields.io/static/v1?label=AI+Agent+Code&message=Node.js&color=%23339933)](https://github.com/harelos/foundry) |
+
+---
+
 ## 🤝 Contributing
 
 Contributions are welcome! 🎉 This repo grows through community contributions.
