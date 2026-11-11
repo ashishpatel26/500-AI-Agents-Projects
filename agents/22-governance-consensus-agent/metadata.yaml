@@ -1,0 +1,11 @@
+title: governance-consensus-agent
+description: Multi-model multi-temperature consensus system with 5 governance modes and constitution-protected veto power
+author: l3al3y
+language: python
+framework: other
+tags: [multi-agent, consensus, governance, adversarial, cross-agreement, constitution, parliament]
+industry: general
+difficulty: advanced
+llm: gpt-4o-mini
+entrypoint: agent.py
+requirements: requirements.txt

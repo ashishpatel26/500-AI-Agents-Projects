@@ -1,0 +1,1 @@
+# No external dependencies — uses stdlib only. Python 3.8+
