@@ -1,0 +1,4 @@
+strands-agents[openai]==1.64.0
+pydantic==2.14.3
+ddgs==9.16.1
+python-dotenv==1.0.1
