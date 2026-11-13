@@ -177,10 +177,13 @@ def build_agent() -> Agent:
         model_id="gpt-4o-mini",
         params={"temperature": 0.3},
     )
+    # callback_handler=None turns off streaming to the console, so the run
+    # prints only the typed brief from main() instead of the model's raw text.
     return Agent(
         model=model,
         system_prompt=SYSTEM_PROMPT,
         tools=[search_web, read_page],
+        callback_handler=None,
     )
 
 

@@ -33,7 +33,7 @@ pip install -r requirements.txt
 cp .env.example .env   # add your OpenAI API key
 ```
 
-Get a free API key at https://platform.openai.com/api-keys. DuckDuckGo search
+Get an API key at https://platform.openai.com/api-keys. DuckDuckGo search
 needs no key.
 
 ## Run
@@ -46,31 +46,39 @@ python agent.py
 python agent.py --topic "how retrieval-augmented generation works"
 ```
 
-Runtime: under a minute and a few cents on `gpt-4o-mini`.
+Runtime: about 25 seconds and a few cents on `gpt-4o-mini`.
 
 ## Sample Output
 
-```
-Topic: Model Context Protocol
+Real output of `python agent.py` (default topic):
 
-Summary: The Model Context Protocol (MCP) is an open-source framework
-introduced by Anthropic on November 25, 2024, aimed at standardizing how AI
-systems, particularly large language models (LLMs), integrate and interact
-with external data sources and tools.
+```
+Topic: AI agents use of the Model Context Protocol (MCP)
+
+Summary: The Model Context Protocol (MCP) is an open-source standard designed
+to facilitate communication between AI agents and external systems, such as
+databases, tools, and workflows. It allows AI applications to access and
+utilize various resources effectively, enhancing their functionality and
+enabling more complex interactions.
 
 Findings:
-  - MCP serves as a universal connector, facilitating communication between AI
-    models and external systems without custom integrations.
-    source: https://grokipedia.com/page/model-context-protocol
-  - It allows AI applications to share context and metadata, which can reduce
-    errors such as misinterpretations or hallucinations.
-    source: https://cloud.google.com/discover/what-is-model-context-protocol
-  - MCP has been adopted by various AI providers and is supported by
-    organizations including AWS and Microsoft.
-    source: https://en.wikipedia.org/wiki/Model_Context_Protocol
+  - The MCP system consists of three main components: the MCP host (where the
+    agent runs), the MCP client (the interface for the agent), and the MCP
+    server (which provides access to external tools and data).
+    source: https://www.aihandbook.io/agentic-ai-handbook/mcp/
+  - MCP defines a clear protocol for how tools expose their capabilities, how
+    agents request actions or data, and how context is shared, allowing agents
+    to interact with tools without needing to understand their internal
+    workings.
+    source: https://www.aihandbook.io/agentic-ai-handbook/mcp/
+  - MCP is supported by various AI applications, including Claude and ChatGPT,
+    and acts like a USB-C port for AI applications, providing a universal
+    connection standard.
+    source: https://modelcontextprotocol.io/docs/2026-07-28/getting-started/intro
 
-Confidence: high - The information is supported by multiple reliable sources,
-including primary documentation and recent articles from reputable platforms.
+Confidence: high - The information is derived from multiple reputable sources,
+including the official MCP documentation and a detailed analysis of its
+architecture and applications.
 ```
 
 The run made several tool calls: the model searched, read the pages it found,
