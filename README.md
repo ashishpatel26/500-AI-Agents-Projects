@@ -117,6 +117,12 @@ Choosing a framework? Here's when to use each:
 | **Lina Egyptian Medical Chatbot** | Healthcare | Egyptian medical assistant chatbot | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/dina-khalid/Lina-Egyptian-Medical-Chatbot) |
 | **NextRole (AI Career Assistant)** | Human Resources | Tailors a resume to a job description and generates interview prep plus a day-of battlecard via a multi-agent system | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/tam159/next-role) |
 | **PII Sanitization Agent** | Privacy/Compliance | Redacts PII (emails, phones, national IDs, bank accounts, API keys) from text before it reaches an LLM; fail-closed, multilingual, on-chain proof via TrustBoost | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/teodorofodocrispin-cmyk/TrustBoost-PII-Sanitizer) |
+| **OpenHands (formerly OpenDevin)** | Software Development | AI software engineer that plans tasks, writes and runs code, browses the web, and opens pull requests | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/OpenHands/OpenHands) |
+| **Browser Use** | Web Automation | Enables agents to control a real browser — navigate, click, fill forms, and extract structured data | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/browser-use/browser-use) |
+| **MetaGPT** | Software Development | Multi-agent framework that simulates an AI software company, assigning roles (PM, architect, engineer) to turn one-line requirements into code | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/FoundationAgents/MetaGPT) |
+| **STORM** | Research / Education | Generates Wikipedia-style research reports with citations through multi-perspective, question-driven web research | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/stanford-oval/storm) |
+| **UFO** | Desktop Automation | UI-focused agent that operates Windows applications and websites through natural-language GUI interaction | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/microsoft/UFO) |
+| **Letta (MemGPT)** | Agent Infrastructure | Platform for stateful agents with persistent long-term memory that learn and self-improve over time | [![GitHub](https://img.shields.io/badge/Code-GitHub-black?logo=github)](https://github.com/letta-ai/letta) |
 
 ---
 
