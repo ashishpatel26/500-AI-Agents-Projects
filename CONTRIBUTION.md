@@ -25,13 +25,13 @@ If your contribution is large (new category, many projects, major refactor) plea
 Each agent project added must include the following at the top level of its folder:
 
 Agents live in `agents/NN-agent-name/` where `NN` is the next free number. Copy the
-layout of an existing agent — `agents/01-web-research-agent/` is the reference. Exactly
-five files, nothing more:
+layout of an existing agent — `agents/01-web-research-agent/` is the reference. Every
+agent must include these five items (additional tests, demos, or notebooks are welcome):
 
 - `README.md` — what it does, quick start with exact commands, sample output, and rough runtime.
-- `agent.py` — the runnable entrypoint. Must run end-to-end in under 10 minutes.
+- A runnable entrypoint, normally `agent.py`. It must run end-to-end in under 10 minutes.
   A notebook is fine instead if the demo is genuinely better that way.
-- `requirements.txt` — pin your versions. `pyproject.toml` or `environment.yml` also fine.
+- A pinned dependency file: `requirements.txt`, `pyproject.toml`, or `environment.yml`.
 - `.env.example` — every env var the agent needs, with placeholder values. Never a real key.
 - `metadata.yaml` — see the schema below.
 
@@ -47,7 +47,7 @@ title: web-research-agent
 description: Searches the web for a topic and synthesizes a structured research report
 author: your-github-username
 language: python
-framework: langgraph        # langgraph | crewai | autogen | agno | llamaindex | other
+framework: langgraph        # langchain | langgraph | crewai | autogen | agno | llamaindex | other
 tags: [research, web-search, rag, langgraph]
 industry: general
 difficulty: intermediate    # beginner | intermediate | advanced
@@ -113,6 +113,8 @@ Before opening a PR:
 - [ ] Ensure no secrets or private data are included
 - [ ] Rebase onto current `main` — README moves fast and stale branches conflict
 - [ ] Confirm license compatibility for added assets
+- [ ] Run `python -m pip install -r scripts/requirements.txt`
+- [ ] Run `python scripts/validate_agents.py`
 
 ### Sign your commits (DCO)
 

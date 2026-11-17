@@ -1,0 +1,45 @@
+name: Validate Agents
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "agents/**"
+      - "scripts/validate_agents.py"
+      - "scripts/requirements.txt"
+      - "scripts/tests/**"
+      - ".github/workflows/validate-agents.yml"
+      - "CONTRIBUTION.md"
+  pull_request:
+    paths:
+      - "agents/**"
+      - "scripts/validate_agents.py"
+      - "scripts/requirements.txt"
+      - "scripts/tests/**"
+      - ".github/workflows/validate-agents.yml"
+      - "CONTRIBUTION.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: scripts/requirements.txt
+
+      - name: Install validator dependency
+        run: python -m pip install -r scripts/requirements.txt
+
+      - name: Validate agent catalog
+        run: python scripts/validate_agents.py
+
+      - name: Test the validator
+        run: python -m unittest discover -s scripts/tests
